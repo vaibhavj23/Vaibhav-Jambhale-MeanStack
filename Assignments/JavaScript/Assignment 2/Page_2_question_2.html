@@ -1,0 +1,56 @@
+<html>
+    <body>
+        <h3 id="array"></h3>
+        <button onclick="myFunction1()">Find square of the elements</button>
+        <button onclick="myFunction2()">Find square root of the elements</button>
+        <div id="display"></div>
+        <script>
+            var array1=[9,25,36,4,1];
+            var array2=[9,25,36,4,1];
+            var result_array=[];
+            var i=1;
+            count=0;
+            var len=0;
+            document.getElementById("array").innerHTML=array1;
+            function map(array,func)
+            {
+                if(count<len)
+                {
+                    result_array.push(func(array[0]));
+                    count++;
+                    return map(array.slice(i),func);
+                }
+                else{
+                    return result_array;
+                }
+            };
+            function square(x)
+            {
+                return x*x;
+            };
+            function sqrt(x)
+            {
+                return Math.sqrt(x);
+            };
+           
+            function myFunction1()
+            {
+                array1=[9,25,36,4,1];
+                result_array=[];
+                len=array1.length
+                count=0;
+                var square_array=map(array1,square);
+                document.getElementById("display").innerHTML="The square of the elements is "+square_array;
+            };
+            function myFunction2()
+            {
+                array2=[9,25,36,4,1];
+                len=array2.length
+                result_array=[];
+                count=0;
+                var sqrt_array=map(array2,sqrt);
+                document.getElementById("display").innerHTML="The square root of the elements is "+sqrt_array;
+            }
+        </script>
+    </body>
+</html>

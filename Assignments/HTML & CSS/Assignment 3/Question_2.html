@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Question_2.css">
+        <title>Html Forms</title>
+    </head>
+    <body>
+        <h1>Bank Account Registration Form</h1>
+        <div class="container">
+            <form action="#">
+    
+                <label for="fname">First Name</label><br>
+                <input type="text" id="fname" name="firstname" placeholder="Your name.." required><br>
+                
+                <label for="lname">Last Name</label><br>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name.." required><br>
+    
+                <label for="gender">Gender</label>&nbsp&nbsp
+                Male <input type="radio" id="gender" name="gender" value="M" required>
+                Female <input type="radio" id="gender" name="gender" value="F" required><br><br>
+                
+                <label for="age">Age</label><br>
+                <input type="number" id="age" name="age" placeholder="Enter your age.." required><br>
+                
+                <label for="address">Address</label><br>
+                <select id="address" name="address">
+                    <option value="chembur">Chembur</option>
+                    <option value="vashi">Vashi</option>
+                    <option value="dadar">Dadar</option>
+                    <option value="panvel">Panvel</option>
+                    <option value="bandra">Bandra</option>
+                    <option value="cst">CST</option>
+                </select><br>
+                
+                <label for="account">Select Accounts to create</label><br>
+                &nbsp&nbsp<input type="checkbox" id="account" name="s_account" >Saving Account<br>
+                &nbsp&nbsp<input type="checkbox" id="account" name="f_account" >Fixed Account<br><br>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" placeholder="Your your email.." required><br>
+    
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password" placeholder="Enter Password.." required><br>
+    
+                <center><input type="submit" value="Submit"></center>
+            </form>
+        
+    </body>
+</html>

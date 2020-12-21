@@ -1,0 +1,377 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand" href="#">Crop Types</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav nav-fill w-100">
+            <a style="cursor: pointer;" class="nav-item nav-link" (click)="viewAll()">ALL</a>
+            <a style="cursor: pointer;" class="nav-item nav-link" (click)="viewGrains()">GRAINS</a>
+            <a style="cursor: pointer;" class="nav-item nav-link" (click)="viewFruits()">FRUITS</a>
+            <a style="cursor: pointer;" class="nav-item nav-link" (click)="viewVegetables()">VEGETABLES</a>
+            <a style="cursor: pointer;" class="nav-item nav-link" (click)="viewNuts()">NUTS</a>
+        </div>
+    </div>
+</nav>
+
+<section *ngIf="isViewGrains" id="team" class="pb-5">
+    <div id="grain" class="container">
+        <h5 class="section-title h1">GRAINS</h5>
+        <div class="row">
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let crop of grainsArray">
+                <div class="image-flip">
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{crop.cropName | uppercase}}</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Crop Type : </b>{{crop.cropType | uppercase}}</p>
+                                    <p class="card-text"><b>Quantity Available : </b>{{crop.quantityAvailable}} Kg</p>
+                                    <p class="card-text"><b>Price/Kg : </b>{{crop.pricePerKg | currency : 'INR'}}</p>
+                                    <p class="card-text"><b>Published Date : </b>{{crop.publishedDate | date }}</p>
+                                    <p class="card-text"><b>Publisher Rating : </b>{{crop.rating}}</p>
+                                    <p><ngb-rating id="farmerRating" [(rate)]="crop.rating" [max]="5"></ngb-rating></p>
+                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i
+                                            class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Publisher Info</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Publisher Name : </b>{{crop.farmerName }}</p>
+                                    <p class="card-text"><b>Publisher Email : </b>{{crop.publishedBy }}</p>
+                                    <p class="card-text"><b>Publisher Contact : </b>{{crop.contact }}</p>
+                                    <p class="card-text"><b>Crop Location :
+                                        </b>{{crop.cropLocation.landmark}},{{crop.cropLocation.area}},
+                                        {{crop.cropLocation.city}},{{crop.cropLocation.state}},{{crop.cropLocation.pinCode}}
+                                    </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <p data-placement="top" data-toggle="tooltip" title="Edit"><button
+                                                    class="btn btn-success" (click)="onCheckout(crop)" data-title="Edit"
+                                                    data-toggle="modal" data-target="#edit">
+                                                    Checkout</button></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+
+        </div>
+    </div>
+</section>
+
+<section *ngIf="isViewFruits" id="team" class="pb-5">
+    <div id="fruit" class="container">
+        <h5 class="section-title h1">FRUITS</h5>
+        <div class="row">
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let crop of fruitsArray">
+                <div class="image-flip">
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{crop.cropName | uppercase}}</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Crop Type : </b>{{crop.cropType | uppercase}}</p>
+                                    <p class="card-text"><b>Quantity Available : </b>{{crop.quantityAvailable}} Kg</p>
+                                    <p class="card-text"><b>Price/Kg : </b>{{crop.pricePerKg | currency : 'INR'}}</p>
+                                    <p class="card-text"><b>Published Date : </b>{{crop.publishedDate | date }}</p>
+                                    <p class="card-text"><b>Publisher Rating : </b>{{crop.rating}}</p>
+                                    <p><ngb-rating id="farmerRating" [(rate)]="crop.rating" [max]="5"></ngb-rating></p>
+                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i
+                                            class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Publisher Info</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Publisher Name : </b>{{crop.farmerName }}</p>
+                                    <p class="card-text"><b>Publisher Email : </b>{{crop.publishedBy }}</p>
+                                    <p class="card-text"><b>Publisher Contact : </b>{{crop.contact }}</p>
+                                    <p class="card-text"><b>Crop Location :
+                                        </b>{{crop.cropLocation.landmark}},{{crop.cropLocation.area}},
+                                        {{crop.cropLocation.city}},{{crop.cropLocation.state}},{{crop.cropLocation.pinCode}}
+                                    </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <p data-placement="top" data-toggle="tooltip" title="Edit"><button
+                                                    class="btn btn-success" (click)="onCheckout(crop)" data-title="Edit"
+                                                    data-toggle="modal" data-target="#edit">
+                                                    Checkout</button></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+
+        </div>
+    </div>
+</section>
+
+<section *ngIf="isViewVegetables" id="team" class="pb-5">
+    <div id="vegetable" class="container">
+        <h5 class="section-title h1">VEGETABLES</h5>
+        <div class="row">
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let crop of vegetablesArray">
+                <div class="image-flip">
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{crop.cropName | uppercase}}</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Crop Type : </b>{{crop.cropType | uppercase}}</p>
+                                    <p class="card-text"><b>Quantity Available : </b>{{crop.quantityAvailable}} Kg</p>
+                                    <p class="card-text"><b>Price/Kg : </b>{{crop.pricePerKg | currency : 'INR'}}</p>
+                                    <p class="card-text"><b>Published Date : </b>{{crop.publishedDate | date }}</p>
+                                    <p class="card-text"><b>Publisher Rating : </b>{{crop.rating}}</p>
+                                    <p><ngb-rating id="farmerRating" [(rate)]="crop.rating" [max]="5"></ngb-rating></p>
+                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i
+                                            class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Publisher Info</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Publisher Name : </b>{{crop.farmerName }}</p>
+                                    <p class="card-text"><b>Publisher Email : </b>{{crop.publishedBy }}</p>
+                                    <p class="card-text"><b>Publisher Contact : </b>{{crop.contact }}</p>
+                                    <p class="card-text"><b>Crop Location :
+                                        </b>{{crop.cropLocation.landmark}},{{crop.cropLocation.area}},
+                                        {{crop.cropLocation.city}},{{crop.cropLocation.state}},{{crop.cropLocation.pinCode}}
+                                    </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <p data-placement="top" data-toggle="tooltip" title="Edit"><button
+                                                    class="btn btn-success" (click)="onCheckout(crop)" data-title="Edit"
+                                                    data-toggle="modal" data-target="#edit">
+                                                    Checkout</button></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+
+        </div>
+    </div>
+</section>
+
+<section *ngIf="isViewNuts" id="team" class="pb-5">
+    <div id="nut" class="container">
+        <h5 class="section-title h1">NUTS</h5>
+        <div class="row">
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let crop of nutsArray">
+                <div class="image-flip">
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{crop.cropName | uppercase}}</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Crop Type : </b>{{crop.cropType | uppercase}}</p>
+                                    <p class="card-text"><b>Quantity Available : </b>{{crop.quantityAvailable}} Kg</p>
+                                    <p class="card-text"><b>Price/Kg : </b>{{crop.pricePerKg | currency : 'INR'}}</p>
+                                    <p class="card-text"><b>Published Date : </b>{{crop.publishedDate | date }}</p>
+                                    <p class="card-text"><b>Publisher Rating : </b>{{crop.rating}}</p>
+                                    <p><ngb-rating id="farmerRating" [(rate)]="crop.rating" [max]="5"></ngb-rating></p>
+                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i
+                                            class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Publisher Info</h4>
+                                    <hr>
+                                    <p class="card-text"><b>Publisher Name : </b>{{crop.farmerName }}</p>
+                                    <p class="card-text"><b>Publisher Email : </b>{{crop.publishedBy }}</p>
+                                    <p class="card-text"><b>Publisher Contact : </b>{{crop.contact }}</p>
+                                    <p class="card-text"><b>Crop Location :
+                                        </b>{{crop.cropLocation.landmark}},{{crop.cropLocation.area}},
+                                        {{crop.cropLocation.city}},{{crop.cropLocation.state}},{{crop.cropLocation.pinCode}}
+                                    </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <p data-placement="top" data-toggle="tooltip" title="Edit"><button
+                                                    class="btn btn-success" (click)="onCheckout(crop)" data-title="Edit"
+                                                    data-toggle="modal" data-target="#edit">
+                                                    Checkout</button></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-left" id="Heading">Enter Purchase Details</h4>
+                <button type="button" class="close text-right" data-dismiss="modal" aria-hidden="true">
+                    x</button>
+            </div>
+            <form [formGroup]="purchaseCropForm" ngNativeValidate>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class=" column">
+                            <label class="form-label">Crop Type</label>
+                            <input class="form-control" formControlName="cropType" type="text" disabled required>
+                        </div>&nbsp; &nbsp;
+                        <div class="column">
+                            <label class="form-label">Crop Name</label>
+                            <input class="form-control" formControlName="cropName" type="text" disabled required>
+                        </div>
+                    </div>
+                    <div class=" row">
+                        <div class="column">
+                            <label class="form-label">Purchasing Quantity (Kg)</label>
+                            <input #opt type="number" class="form-control" max="{{maxQuantity}}"
+                                (change)="calculateAmount(opt.value)" formControlName="quantityPurchased"
+                                required="required">
+                            <div *ngIf="purchaseFormControl.quantityPurchased.invalid && (purchaseFormControl.quantityPurchased.dirty || purchaseFormControl.quantityPurchased.touched)"
+                                class="text-danger">
+
+                                <div *ngIf="purchaseFormControl.quantityPurchased.errors.required">
+                                    Please enter quantity to buy.
+                                </div>
+                                <div *ngIf="purchaseFormControl.quantityPurchased.errors.min">
+                                    Please enter positive value.
+                                </div>
+                                <div *ngIf="purchaseFormControl.quantityPurchased.errors.max">
+                                    <p>Please enter value less than available quantity.</p>
+                                    <p>{{maxQuantity}} kg of item is available</p>
+                                </div>
+                            </div>
+                        </div>&nbsp; &nbsp;
+                        <div class="column">
+                            <label class="form-label">Price / Kg (Rs)</label>
+                            <input type="number" class="form-control" value="{{cropObj.pricePerKg}}"
+                                formControlName="pricePerKg" required="required" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Total Price (Rs)</label>
+                        <input type="number" class="form-control" value="{{totalAmount}}" disabled
+                            formControlName="totalPrice" required="required">
+                    </div>
+
+                </div>
+                <div class="modal-footer ">
+                    <div class="row">
+                        <div class="column">
+                            <button type="submit" class="btn btn-secondary btn-lg" (click)="onSubmit()"
+                                [disabled]="purchaseCropForm.invalid" data-dismiss="modal" style="width: 100%;">Buy
+                                (COD)</button>
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <div class="column">
+                            <button type="submit" id="rzp-button1" class="btn btn-success btn-lg"
+                                [disabled]="purchaseCropForm.invalid" (click)="OpenRazorPay()" data-dismiss="modal"
+                                style="width: 100%;">Pay Online</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-- rating Modal-->
+ <div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show':showRatingModal}">
+    <div class="modal-dialog">
+
+        
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-left">Would you like to give rating</h4>
+                <button type="button" class="close text-right" data-dismiss="modal" (click)="showRatingModal=false">
+                    x</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <ngb-rating [formControl]="ctrl" [max]="5" id="rating"></ngb-rating>
+                    <div class="form-text small">
+                        <div *ngIf="ctrl.valid" class="text-success">Thanks!</div>
+                        <div *ngIf="ctrl.invalid" class="text-danger">Please rate us</div>
+                    </div>
+                </div>
+
+                <hr>
+                <pre>Rating: <b>{{ ctrl.value }}</b></pre>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" [disabled]="ctrl.invalid" class="btn btn-success" (click)="onRatingSubmit()"
+                    data-dismiss="modal">Submit</button>
+                <button type="button" class="btn btn-danger" (click)="showRatingModal=false"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+ 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" [ngClass]="{'show' : showModal || showModalValue}" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    (click)="closeStaticModal();showModal=false;showRatingModal=true">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-danger">
+                <div class="alert alert-success"><span class="glyphicon glyphicon-warning-sign"></span>
+                    {{purchaseResponse}}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="closeStaticModal();showModal=false;showRatingModal=true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

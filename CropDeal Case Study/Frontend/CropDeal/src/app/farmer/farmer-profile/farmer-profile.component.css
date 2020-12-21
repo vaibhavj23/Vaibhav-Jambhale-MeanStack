@@ -1,0 +1,43 @@
+#div1{
+    width: 80%;
+    margin: auto;
+}
+
+#div2{
+    width: 80%;
+    margin: auto;
+}
+
+label{
+    text-align: left;
+}
+table{
+    width: 95%;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+button{
+    float: right;
+}
+
+#button1{
+    margin: auto;
+}
+
+table h5{
+    color: #999;
+}
+
+table td{
+    color: rgb(111, 116, 126);
+}
+div h5{
+    color: #999;
+}
+
+label{
+    font-size: 1.1em;
+    color: black;
+    font-weight: 500;
+}

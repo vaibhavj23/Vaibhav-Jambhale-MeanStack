@@ -1,0 +1,53 @@
+<html>
+    <body>
+        <p id="display_list"></p>
+        <p>Fim sum of elemets in an array using the following methods</p>
+        <button onclick="using_for_loop()">Using For Loop</button>
+        <button onclick="using_while_loop()">Using While loop</button>
+        <button onclick="using_recursion()">Using Recursion</button>
+        <div id="display"></div>
+        <script>
+            var num_list=[2,3,4,5];
+            document.getElementById("display_list").innerHTML=num_list;
+            var sum=0;
+            function using_for_loop(){
+                for(i=0;i<num_list.length;i++)
+                {
+                    sum=sum+num_list[i];
+                }
+                document.getElementById("display").innerHTML="Sum is "+sum;
+                sum=0;
+            };
+            function using_while_loop(){
+                var len=num_list.length;
+                var i=0;
+                while(len>0)
+                {
+                    sum=sum+num_list[i];
+                    i++;
+                    len--;
+                }
+                document.getElementById("display").innerHTML="Sum is "+sum;
+                sum=0;
+            };
+            function using_recursion(){
+                var len=num_list.length;
+                var i=0;
+                var res=recurse(num_list,len)
+                function recurse(arr,len)
+                {
+                    if(len<=0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return(recurse(arr,len-1)+(arr[len-1]))
+                    }
+                }
+                document.getElementById("display").innerHTML="Sum is "+res;
+                sum=0;
+            }
+        </script>
+    </body>
+</html>

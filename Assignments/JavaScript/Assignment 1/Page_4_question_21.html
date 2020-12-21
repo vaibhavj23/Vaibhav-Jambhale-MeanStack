@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        List 1
+        <div id="l1"></div>
+        List 2
+        <div id="l2"></div><br>
+        <button onclick="sorted()">Merge</button><br>
+        After merging sorted list
+        <div id="l3"></div>
+        <script>
+            var arr1=[1,4,6];
+            document.getElementById("l1").innerHTML=arr1;
+            var arr2=[2,3,5];
+            document.getElementById("l2").innerHTML=arr2;
+            function sorted(){
+                var arr3=arr1.concat(arr2);
+                arr3.sort();
+                document.getElementById("l3").innerHTML=arr3;
+            }
+        </script>
+    </body>
+</html>

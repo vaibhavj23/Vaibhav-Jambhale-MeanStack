@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="array"></p>
+        <button onclick="findMax()">Find Max</button>
+        <h3 id="max"></h3>
+        <script>
+            var array=[23,12,56,78,43,28];
+            document.getElementById("array").innerHTML=array;
+            function findMax()
+            {
+                array = array.sort(function(a,b){return b-a;});
+                maxele=array[0];
+                document.getElementById("max").innerHTML="Max element is "+maxele;
+            }
+        </script>
+    </body>
+</html>

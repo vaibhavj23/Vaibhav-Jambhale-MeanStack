@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Simple Sidebar - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><b>{{userType | uppercase}}</b></div>
+      <div class="list-group list-group-flush">
+        <a style="cursor: pointer;" (click)="viewFarmerMngmtPage()" routerLink="/viewFarmerMngmtPage" class="list-group-item list-group-item-action bg-light">Farmer Management</a>
+        <a style="cursor: pointer;" (click)="viewDealerMngmtPage()" routerLink="/viewDealerMngmtPage" class="list-group-item list-group-item-action bg-light">Dealer Management</a>
+        <a style="cursor: pointer;" (click)="viewUserRatingPage()" routerLink="/viewUserRatingPage" class="list-group-item list-group-item-action bg-light">View User Ratings</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+
+        <button class="btn btn-info" type="button" onclick="demo()" id="menu-toggle">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    
+
+      <div id="maindiv" class="container-fluid text-black ">
+        <h2 *ngIf="isHomePage" class="mt-4">Welcome {{userType | titlecase}}</h2>
+
+        <div *ngIf="isFarmerMngmtPage">
+          <h2>Farmer Management Page</h2>
+          <p class="hint-text">You can view farmer activity and can delete an farmer here</p>
+        </div>
+        <div *ngIf="isDealerMngmtPage">
+          <h2>Dealer Management Page</h2>
+          <p class="hint-text">You can view dealer activity here</p>
+        </div>
+        <div *ngIf="isUserRatingPage">
+          <h2>Users Ratings Page</h2>
+          <p class="hint-text">You can view ratings given by different dealers to various farmers here</p>
+        </div>
+        
+
+        <!--menu selector-->
+        <app-farmer-mngmt *ngIf = "isFarmerMngmtPage"></app-farmer-mngmt>
+        <app-dealer-mngmt *ngIf = "isDealerMngmtPage"></app-dealer-mngmt>
+        <app-user-rating *ngIf = "isUserRatingPage"></app-user-rating>
+
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+
+  <!-- Menu Toggle Script -->
+  
+
+</body>
+
+</html>

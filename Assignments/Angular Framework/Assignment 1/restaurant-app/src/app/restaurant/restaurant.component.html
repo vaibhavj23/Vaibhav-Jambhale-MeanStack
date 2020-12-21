@@ -1,0 +1,36 @@
+<h4>Restaurant List</h4>
+<ul class="list-group">
+    <li  *ngFor="let restaurant of restaurant_list" class="list-group-item" >
+        {{ restaurant.name }} 
+        <a class="ml-5" [routerLink]="['/menu', restaurant.name]">Menu</a>    
+      </li>
+</ul>
+
+<br>
+<div *ngIf="isAdmin">
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        
+      <a class="nav-link" data-toggle="tab" href="#add"><button type="button" class="btn btn-primary" (click)="onAddPress()">Add Restaurant</button></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#delete"><button type="button" class="btn btn-primary " (click)="onDeletePress()">Delete Restaurant</button></a>
+    </li>
+</ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="add" class="container tab-pane "><br>
+      <h3>ADD</h3>
+      <div *ngIf="display_add_restaurant">
+            <app-add-restaurant (restaurant_added)="addRestaurant($event)"></app-add-restaurant>
+      </div>
+    </div>
+    <div id="delete" class="container tab-pane fade"><br>
+      <h3>DELETE</h3>
+      <div *ngIf="display_delete_restaurant">
+        <app-delete-restaurant (restaurant_deleted)="deleteRestaurant($event)"></app-delete-restaurant>
+      </div>
+    </div>
+  </div>
+</div>

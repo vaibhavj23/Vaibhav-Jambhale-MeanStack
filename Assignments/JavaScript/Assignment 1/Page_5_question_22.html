@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="array"></p>
+        <form onsubmit="return rotateArray();">
+            <input type="number" id="number" placeholder="enter number to rotate array" required><br><br>
+            <input type="submit" value="Rotate">
+        </form>
+        <h3 id="display"></h3>
+        <script>
+            var array=[1,2,3,4,5,6];
+            document.getElementById("array").innerHTML=array;
+            
+            function rotateArray()
+            {  
+                document.getElementById("array").innerHTML=array;
+                var temp=0;
+                var rotate_count=document.getElementById("number").value;
+                for(i=0;i<rotate_count;i++)
+                {
+                    rotate_one_element(array);
+                }
+                
+                function rotate_one_element(array)
+                {
+                    temp=array[0];
+                    for(j=0;j<array.length-1;j++)
+                    {
+                        array[j]=array[j+1];
+                    }
+                    array[array.length-1]=temp;
+                }
+                document.getElementById("display").innerHTML=array;
+                return false;
+            }
+        </script>
+    </body>
+</html>

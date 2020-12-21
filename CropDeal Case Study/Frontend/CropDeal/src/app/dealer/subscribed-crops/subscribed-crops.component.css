@@ -1,0 +1,19 @@
+#subscribe{
+    color: rgb(172, 40, 40);
+}
+
+h5{
+    padding: 3px;
+}
+
+h5 button{
+    margin-left: 60px;
+}
+
+h4{
+    margin-bottom: 10px;
+}
+
+.modal.show{
+    display: block;
+}

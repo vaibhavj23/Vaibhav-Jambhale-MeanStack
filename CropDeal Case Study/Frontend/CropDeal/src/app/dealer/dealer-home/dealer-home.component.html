@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Simple Sidebar - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><b>{{userType | uppercase}}</b></div>
+      <div class="list-group list-group-flush">
+        <a style="cursor: pointer;" (click)="viewProfile()" routerLink="/viewDealerProfile" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a style="cursor: pointer;" (click)="viewSubscribedCrops()" routerLink="/viewSubscribedCrops" class="list-group-item list-group-item-action bg-light">Subscribed Crops</a>
+        <a style="cursor: pointer;" (click)="viewCrops()" routerLink="/viewCrops" class="list-group-item list-group-item-action bg-light">View Crops</a>
+        <a style="cursor: pointer;" (click)="viewNotificationsPage()" routerLink="/viewNotifications" class="list-group-item list-group-item-action bg-light">Notification</a>
+        <a style="cursor: pointer;" (click)="viewPurchasedCrops()" routerLink="/viewPurchasedCrops" class="list-group-item list-group-item-action bg-light">Purchased Crops</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <button class="btn btn-info" type="button" onclick="demo()" id="menu-toggle">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    
+
+        <div id="maindiv" class="container-fluid text-black ">
+          <h2 *ngIf="isHomePage" class="mt-4">Welcome {{dealerName}}</h2>
+          <div *ngIf="isProfilePage">
+            <h2>Profile Page</h2>
+            <p class="hint-text">You can view and edit your profile details here</p>
+          </div>
+          <div *ngIf="isSubscribedCropsPage">
+            <h2>Subscribed Crops Page</h2>
+            <p class="hint-text">You can subscribe to a crop and can also delete a subscribed crop here</p>
+          </div>
+          <div *ngIf="isViewCropsPage">
+            <h2>Purchase Crop Page</h2>
+            <p class="hint-text">You can view and purchase a published crop here</p>
+          </div>
+          <div *ngIf="isViewNotificationsPage">
+            <h2>Notifications Page</h2>
+            <p class="hint-text">You can get notifications regarding subscribed crops here</p>
+          </div>
+          <div *ngIf="isPurchasedCropsPage">
+            <h2>Purchased Crops Page</h2>
+            <p class="hint-text">You can get all the purchased crops details here</p>
+          </div>
+          
+          
+          <!--menu selector-->
+          <app-dealer-profile *ngIf="isProfilePage"></app-dealer-profile>
+          <app-subscribed-crops *ngIf="isSubscribedCropsPage"></app-subscribed-crops>
+          <app-view-crops *ngIf="isViewCropsPage"></app-view-crops>
+          <app-notifications *ngIf="isViewNotificationsPage"></app-notifications>
+          <app-purchased-crops *ngIf="isPurchasedCropsPage"></app-purchased-crops>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+
+  <!-- Menu Toggle Script -->
+  
+
+</body>
+
+</html>

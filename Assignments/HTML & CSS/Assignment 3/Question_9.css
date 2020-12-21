@@ -1,0 +1,159 @@
+body{
+    margin:0;
+    }
+.grid-container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: minmax(50px,auto);
+}
+.grid-container > div {
+    text-align: center;
+}
+
+.nav{
+    grid-column: 1/5;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    background-size: 100%;
+    color:white;
+    font-size: 1.5em;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+}
+
+.nav a{
+    display: block;
+    text-decoration: none;
+    padding: 15px 20px;
+    color: greenyellow;
+    font-weight: 500;
+}
+
+.nav a:hover{
+    background-color:  rgb(68, 65, 65);
+    color:white;
+
+}
+
+
+.name{
+    grid-column: 1/5;
+    grid-row: 2/10;
+    font-size: 45px;
+    background-color:  #DD4124;
+
+}
+.name h1{
+    margin-top: 100px;
+    font-size: 60px;
+    color: white;
+    font-weight: bold;
+}
+
+.name p{
+    color: black;
+}
+
+.project_heading{
+    grid-column:1/5 ;
+    grid-row: 10/12;
+    background-color:  #B565A7;
+}
+
+.project_heading h1{
+    font-size: 30px;
+    color: rgb(33, 33, 59);
+    font-weight: bold;
+
+}
+
+.technology{
+    display: grid;
+    grid-column: 1/5;
+    grid-row: 12/16;
+    grid-gap:15px;
+    background-color:  #B565A7;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: minmax(20px,auto);
+    padding: 0px 60px;
+    padding-bottom: 50px;
+}
+
+.technology div{
+    background-color: #955251;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    text-align: center;
+    margin: 10px 30px;
+    color: white;
+    width: min-content;
+}
+
+.technology div a{
+    text-decoration: none;
+    font-size: 1.3em;
+    color: white;
+    font-weight: 600;
+    padding: 5px 5px;
+    margin-bottom: 5px;
+}
+
+.technology div a:hover{
+    color: rgb(0, 255, 149);
+}
+
+
+.contact{
+    grid-column: 1/3;
+    grid-row: 16/20;
+    background-color: rgb(20, 28, 95);
+    color:white;
+    font-size: 1.2em;
+
+}
+
+.contact h2{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.contact a{
+    text-decoration: none;
+    font-size: 1.3em;
+    color: rgb(0, 255, 149);
+    font-weight: 600;
+    padding: 5px 5px;
+    margin-bottom: 5px;
+}
+
+.contact a:hover{
+    color: red;
+}
+
+.about{
+    grid-column: 3/5;
+    grid-row: 16/20;
+    background-color:  rgb(68, 65, 65);
+    color:  white;
+    font-size: 1.2em;
+}
+
+.about h2{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+
+.footer{
+    grid-column: 1/5;
+    grid-row: 20/21;
+    background-color: black;
+    color: greenyellow;
+    font-size: 1.3em;
+    
+}
+

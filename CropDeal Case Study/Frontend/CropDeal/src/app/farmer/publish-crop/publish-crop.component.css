@@ -1,0 +1,22 @@
+#div1{
+    width: 75%;
+    margin: auto
+}
+
+button{
+    margin: auto;
+}
+
+label{
+    font-size: 1.1em;
+    color: black;
+    font-weight: 500;
+}
+
+div h5{
+    color: #999;
+}
+
+.modal.show{
+    display: block;
+}

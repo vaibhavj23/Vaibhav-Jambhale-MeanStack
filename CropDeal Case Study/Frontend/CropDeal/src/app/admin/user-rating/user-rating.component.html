@@ -1,0 +1,77 @@
+
+<button class="btn btn-primary" (click)="viewDealerRating()" *ngIf="isFarmerRating">View Dealer Ratings</button>
+<div class="container-fluid" *ngIf="isFarmerRating">
+  <h5 class="text-success text-center">Farmers Ratings</h5>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive"> 
+          <div id="viewPage"></div>
+          <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+              <th class="text-center">Farmer Name</th>
+              <th class="text-center">Farmer Email</th>
+              <th class="text-center">Dealer Name</th>
+              <th class="text-center">Dealer Email</th>
+              <th class="text-center">Farmer Rating</th>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let rating of farmerRatingsList ">
+                <td class="text-center">{{rating.farmerName}}</td>
+                <td class="text-center">{{rating.farmerEmail}}</td>
+                <td class="text-center">{{rating.dealerName}}</td>
+                <td class="text-center">{{rating.dealerEmail}}</td>
+                <td class="text-center">{{rating.rating}}</td>
+              </tr>
+  
+  
+            </tbody>
+  
+          </table>
+  
+          <div class="clearfix"></div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" *ngIf="isDealerRating" (click)="viewFarmerRating()">View Farmer Ratings</button>
+  <div class="container-fluid" *ngIf="isDealerRating">
+    <h5 class="text-success text-center">Dealers Ratings</h5>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive"> 
+          <div id="viewPage"></div>
+          <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+              <th class="text-center">Dealer Name</th>
+              <th class="text-center">Dealer Email</th>
+              <th class="text-center">Farmer Name</th>
+              <th class="text-center">Farmer Email</th>
+              <th class="text-center">Dealer Rating</th>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let rating of dealerRatingsList ">
+                <td class="text-center">{{rating.dealerName}}</td>
+                <td class="text-center">{{rating.dealerEmail}}</td>
+                <td class="text-center">{{rating.farmerName}}</td>
+                <td class="text-center">{{rating.farmerEmail}}</td>
+                <td class="text-center">{{rating.rating}}</td>
+              </tr>
+  
+  
+            </tbody>
+  
+          </table>
+  
+          <div class="clearfix"></div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <h2>Page 3 question 4</h2>
+    <p>open console to see the output</p>
+    <script>
+        var Savings=function(accountNumber,accountHolderName,accountBalance,isSalary)
+        {
+            this.accountNumber=accountNumber;
+            this.accountHolderName=accountNumber;
+            this.accountBalance=accountBalance;
+            this.isSalary=isSalary;
+        };
+
+        var Current=function(accountNumber,accountHolderName,accountBalance,odLimit)
+        {
+            this.accountNumber=accountNumber;
+            this.accountHolderName=accountNumber;
+            this.accountBalance=accountBalance;
+            this.odLimit=odLimit;
+        };
+
+        Savings.prototype.withdraw=function(amount)
+        {
+            if((this.accountBalance-amount)>0)
+            {
+                this.accountBalance=this.accountBalance-amount;
+            }
+            else
+            {
+                console.log("Insufficient Balance");
+            }
+        };
+        Current.prototype.withdraw=function(amount)
+        {
+            if((this.accountBalance-amount)>=this.odLimit)
+            {
+                this.accountBalance=this.accountBalance-amount;
+            }
+            else
+            {
+                console.log("Balance goes below OdLimit");
+            }
+        };
+
+        var acc1=new Savings(1,"Rahul",5000,100);
+        var acc2=new Current(2,"Dhavan",6000,3000);
+
+        Savings.prototype.getCurrentBalance=function()
+        {
+            console.log("Account Number: "+this.accountNumber+" Balance: "+this.accountBalance);
+        };
+        Current.prototype.getCurrentBalance=function()
+        {
+            console.log("Account Number: "+this.accountNumber+" Balance: "+this.accountBalance);
+        };
+
+        console.log(acc1);
+        console.log(acc2);
+
+        acc1.withdraw(6000);
+        acc1.withdraw(3000);
+        acc2.withdraw(4000);
+        acc2.withdraw(2000);
+
+        acc1.getCurrentBalance();
+        acc2.getCurrentBalance();
+    </script>
+    </body>
+</html>

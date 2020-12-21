@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="array_type1"></p>
+        <p id="array_type2"></p>
+        <script>
+            var string_array=["1.2","2.2","3.3","4.3"];
+            document.getElementById("array_type1").innerHTML=typeof(string_array[0]);
+            var number_array = convert_to_number(string_array);
+            document.getElementById("array_type2").innerHTML=typeof(number_array[0]);
+            function convert_to_number(arr)
+            {
+                for(i=0;i<arr.length;i++)
+                {
+                    arr[i]=Number(arr[i]);
+                }
+                return arr;
+            }
+        </script>
+    </body>
+</html>

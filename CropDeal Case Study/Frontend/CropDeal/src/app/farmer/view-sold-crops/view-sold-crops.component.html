@@ -1,0 +1,172 @@
+<div *ngIf = "!displayReceipt" class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <div id="viewPage"></div>
+          <table id="mytable" class="table table-bordred table-striped">
+            <thead>
+              <th>Date</th>
+              <th>Crop Type</th>
+              <th>Crop Name</th>
+              <th>Quantity Sold</th>
+              <th>Selling Price/Kg</th>
+              <th>Dealer Email</th>
+              <th>Receipt</th>
+            </thead>
+            <tbody>
+  
+              <tr *ngFor="let crop of soldCropsArray">
+
+                <td>{{crop.purchasedDate | date}}</td>
+                <td>{{crop.cropType}}</td>
+                <td>{{crop.cropName}}</td>
+                <td>{{crop.quantityPurchased}} Kg</td>
+                <td>{{crop.pricePerKg}}</td>
+                <td>{{crop.dealerEmail}}</td>
+        
+                <td>
+                  <button class="btn btn-success" (click)="getReceipt(crop)">Receipt</button>
+                </td>
+              </tr>
+  
+  
+            </tbody>
+  
+          </table>
+  
+          <div class="clearfix"></div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+<div  *ngIf = "displayReceipt">
+    <button type="button" id="btn1" class="btn btn-info btn-lg" (click)="displayReceipt = false">Back</button><br><br><br>
+      <div id="div1" class="container bootstrap snippets bootdeys">
+    <div class="row">
+      <div class="col-sm-12">
+              <div class="panel panel-default invoice" id="invoice">
+              <div class="panel-body">
+                <div class="invoice-ribbon"><div class="ribbon-inner">PAID</div></div>
+                <div class="row">
+    
+                    <div class="col-sm-6 top-left">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+    
+                    <div class="col-sm-6 top-right">
+                            <h4 class="marginright">INVOICE-{{receiptObj._id}}</h4>
+                            <span class="marginright">{{ receiptObj.purchasedDate | date }}</span>
+                    </div>
+    
+                </div>
+                <hr>
+                <div class="row">
+    
+                    <div id = "leftdiv" class="col-xs-5 from">
+                        <p class="lead marginbottom">From : {{receiptObj.dealerName}}</p>
+                        <p>Phone: {{receiptObj.dealerContact}}</p>
+                        <p>Email: {{receiptObj.dealerEmail}}</p>
+                    </div>
+    
+                    <div id = "middiv" class="col-xs-5 to">
+                        <p class="lead marginbottom">To : abc</p>
+                        <p>Phone: 989252232</p>
+                        <p>Email: {{receiptObj.farmerEmail}}</p>
+    
+                    </div>
+    
+                    <div id = "rightdiv" class="col-xs-5 payment-details">
+                        <p class="lead marginbottom payment-info">Payment details</p>
+                        <p>Date: {{ receiptObj.purchasedDate | date }} </p>
+                        <p>Time: {{receiptObj.purchasedDate | date : 'longTime'}} </p>
+                        <p>Total Amount: {{receiptObj.totalPrice | currency: 'INR'}}</p>
+                        <p>Method: {{receiptObj.purchaseMethod}}</p>
+                    </div>
+    
+                </div>
+    
+                <div class="row table-row">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="text-center" style="width:15%">Crop Type</th>
+                          <th class="text-center" style="width:15%">Crop Name</th>
+                          <th class="text-center" style="width:25%">Crop Location</th>
+                          <th class="text-right" style="width:15%">Quantity</th>
+                          <th class="text-right" style="width:15%">Unit Price</th>
+                          <th class="text-right" style="width:15%">Total Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">{{receiptObj.cropType}}</td>
+                          <td class="text-center">{{receiptObj.cropName}}</td>
+                          <td class="text-center">{{receiptObj.cropLocation.landmark}},
+                              {{receiptObj.cropLocation.area}},{{receiptObj.cropLocation.city}}
+                            {{receiptObj.cropLocation.state}} {{receiptObj.cropLocation.pinCode}}</td>
+                          <td class="text-right">{{receiptObj.quantityPurchased}} Kg</td>
+                          <td class="text-right">{{receiptObj.pricePerKg | currency: 'INR'}}</td>
+                          <td class="text-right">{{receiptObj.totalPrice}}</td>
+                        </tr>
+                       </tbody>
+                    </table>
+    
+                </div>
+    
+                <div class="row">
+                <div id="greet" class="col-xs-6 margintop">
+                    <p class="lead marginbottom">THANK YOU!</p>
+    
+                   <!-- <button class="btn btn-success" (click)="openPDF()" id="invoice-print"><i class="fa fa-print"></i> Print Invoice</button>
+                    <button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>-->
+                </div>
+                <div id="total" class="col-xs-6 text-right pull-right invoice-total">
+                          <p>Total : {{receiptObj.totalPrice | currency: 'INR'}}</p>
+                </div>
+                </div>
+    
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <button class="btn btn-success" (click)="openPDF()" id="invoice-print"><i class="fa fa-print"></i> Print Invoice</button>
+
+</div>
+
+<!-- rating Modal-->
+<div id="myModal" class="modal fade" role="dialog" [ngClass]="{'show':showRatingModal}">
+  <div class="modal-dialog">
+
+      
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title text-left">Would you like to give rating to this dealer</h4>
+              <button type="button" class="close text-right" data-dismiss="modal" (click)="showRatingModal=false">
+                  x</button>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                  <ngb-rating [formControl]="ctrl" [max]="5" id="rating"></ngb-rating>
+                  <div class="form-text small">
+                      <div *ngIf="ctrl.valid" class="text-success">Thanks!</div>
+                      <div *ngIf="ctrl.invalid" class="text-danger">Please rate us</div>
+                  </div>
+              </div>
+
+              <hr>
+              <pre>Rating: <b>{{ ctrl.value }}</b></pre>
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" [disabled]="ctrl.invalid" class="btn btn-success" (click)="onRatingSubmit()"
+                  data-dismiss="modal">Submit</button>
+              <button type="button" class="btn btn-danger" (click)="showRatingModal=false"
+                  data-dismiss="modal">Close</button>
+          </div>
+      </div>
+
+  </div>
+</div>

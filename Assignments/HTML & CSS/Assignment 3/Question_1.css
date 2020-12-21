@@ -1,0 +1,80 @@
+.container{
+    background-color: rgb(79, 136, 155);
+    margin: 0px 60px;
+    border: 1px solid black;
+    height: auto;
+}
+
+body{
+    background-color:lightgray;
+}
+
+h1{
+    font-family:inherit;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+}
+h2{
+    font-family:inherit;
+    font-weight: 500;
+    text-align: center;
+    color: rgb(47, 230, 71);
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;   
+}
+p{
+    color: rgb(24, 3, 24);
+    text-align: center;
+    font-weight: 700;
+    margin: 5px 10px ;
+    font-size: 1.1em;
+}
+
+li{
+    color: lightgray;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: justify;
+    margin: 15px;
+}
+ul {
+    list-style: none;
+  }
+  
+ul li::before {
+    content: "*";
+    color: rgb(6, 15, 70);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+.quote{
+    color:  rgb(6, 15, 70);
+    font-weight: 800;
+    font-family: inherit;
+    font-style: italic;
+    text-align: center;
+}
+
+.link{
+    font-family: inherit;
+    color :rgb(185, 9, 76);
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return check_consecutive();">
+            <input type="text" id="str" placeholder="Enter string" required>
+            <input type="submit" value="Check">
+        </form>
+        <div id="print"></div>
+        <script>
+            function check_consecutive(){
+                var str=document.getElementById("str").value;
+                var len=str.length;
+                var consecutive_string_array=[];
+                var ele="";
+                var add_str="";
+                for(i=0;i<len;i++)
+                {
+                    if(str.charCodeAt(i)!=97 && str.charCodeAt(i)!=98)
+                    {
+                        ele=str.charAt(i);
+                        add_str=add_str+ele;
+                        //alert("in if loop");
+                    }
+                    else if(str.charCodeAt(i)==97 || str.charCodeAt(i)==98)
+                    {
+                        //alert("in else loop");
+                        consecutive_string_array.push(add_str);
+                        add_str="";
+                    }
+                    if(i==(len-1))
+                    {
+                        consecutive_string_array.push(add_str);
+                    }
+                }
+                //alert(consecutive_string_array);
+                var longest = consecutive_string_array.sort(function (a, b) { return b.length - a.length; })[0];
+                var result_array=[]
+                for(i=0;i<consecutive_string_array.length;i++)
+                {
+                    if(consecutive_string_array[i].length==longest.length)
+                    {
+                        result_array.push(consecutive_string_array[i]);
+                    }
+                }
+                document.getElementById("print").innerHTML="Longest token is "+result_array;
+                return false;
+            }
+        </script>
+
+    </body>
+</html>

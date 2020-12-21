@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="array"></p>
+        <button onclick="reverseArray()">Reverse</button>
+        <h3 id="max"></h3>
+        <script>
+            var array=[23,12,56,78,43,28];
+            document.getElementById("array").innerHTML=array;
+            function reverseArray()
+            {
+                var temp=0;
+                for(i=0;i<array.length/2;i++)
+                {
+                temp=array[i];
+                array[i]=array[array.length-1-i];
+                array[array.length-1-i]=temp;
+                }
+                document.getElementById("max").innerHTML=array;
+            }
+        </script>
+    </body>
+</html>

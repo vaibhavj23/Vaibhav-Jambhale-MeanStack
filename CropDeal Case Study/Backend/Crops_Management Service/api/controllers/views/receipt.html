@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./receipt.css">
+
+</head>
+
+<body>
+    <div>
+        <div id="div1" class="container bootstrap snippets bootdeys">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default invoice" id="invoice">
+                        <div class="panel-body">
+                            <div class="invoice-ribbon">
+                                <div class="ribbon-inner">PAID</div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-6 top-left">
+                                    <i class="fa fa-rocket"></i>
+                                </div>
+
+                                <div class="col-sm-6 top-right">
+                                    <h4 class="marginright">INVOICE-{{receiptId}}</h4>
+                                    <span class="marginright">{{ receiptDate}}</span>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row">
+
+                                <div class="col-xs-5 from">
+                                    <p class="lead marginbottom"><b>From :</b></p>
+                                        <p>{{dealerName}} </p>
+                                    <p>Phone: {{dealerContact}}</p>
+                                    <p>Email: {{dealerEmail}}</p>
+                                </div>
+                                
+                                <div class="col-xs-5 to">
+                                    <p class="lead marginbottom"><b>To : </b></p>
+                                        <p>{{farmerEmail}}</p>
+                                    <p>Phone: {{farmerContact}}</p>
+
+                                </div>
+                                
+                                <div class="col-xs-5 payment-details">
+                                    <p class="lead marginbottom "><b>Payment details</b></p>
+                                    <p>Date: {{ purchasedDate }} </p>
+                                    <p>Total Amount: {{totalPrice}} Rs</p>
+                                    <p>Method: {{purchaseMethod}}</p>
+                                </div>
+
+                            </div>
+                            <br>
+
+                            <div class="row table-row">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:15%">Crop Type</th>
+                                            <th  style="width:15%">Crop Name</th>
+                                            <th style="width:25%">Crop Location</th>
+                                            <th  style="width:15%">Quantity</th>
+                                            <th  style="width:15%">Unit Price</th>
+                                            <th  style="width:15%">Total Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center" style="margin-left: 5px;">{{cropType}}</td>
+                                            <td class="text-center"style="margin-left: 5px;">{{cropName}}</td>
+                                            <td class="text-center">{{landmark}},
+                                                {{area}},{{city}}
+                                                {{state}} {{pinCode}}
+                                            </td>
+                                            <td class="text-right"style="margin-left: 5px;">{{quantityPurchased}} Kg</td>
+                                            <td class="text-right"style="margin-left: 5px;">{{pricePerKg}} Rs</td>
+                                            <td class="text-right"style="margin-left: 5px;">{{totalPrice}} Rs</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="row">
+                                <div id="greet" class="col-xs-6 margintop">
+                                    <p class="lead marginbottom">THANK YOU!</p>
+
+                                    <!--<button class="btn btn-success" id="invoice-print"><i class="fa fa-print"></i> Print Invoice</button>
+                        <button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+
+</html>

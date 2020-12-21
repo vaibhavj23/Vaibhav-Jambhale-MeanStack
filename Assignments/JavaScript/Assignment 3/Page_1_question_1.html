@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            var Rectangle=function(width,height)
+            {
+                this.width=width;
+                this.height=height;
+            };
+            var rect1= new Rectangle(20,30);
+            console.log("Rectangle 1 height: "+rect1.height);
+            console.log("Rectangle 1 width: "+rect1.width);
+            var rect2= new Rectangle(40,10);
+            console.log("Rectangle 2 height: "+rect2.height);
+            console.log("Rectangle 2 width: "+rect2.width);
+            var rect3= new Rectangle(30,50);
+            console.log("Rectangle 3 height: "+rect3.height);
+            console.log("Rectangle 3 width: "+rect3.width);
+
+            rect3.width=70;
+            rect3.height=80;
+
+            console.log("Rectangle 3 height: "+rect3.height);
+            console.log("Rectangle 3 width: "+rect3.width);
+
+        </script>
+    </body>
+</html>

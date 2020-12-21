@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <script>
+            var num1=0;
+            var num2=0;
+            var num3=0;
+            
+            while(true)
+            {
+                num1=prompt("Enter number between 1 t0 30");
+                if(num1>=1 && num1<=30)
+                {
+                    break;
+                }
+                else
+                {
+                    alert("wrong input");
+                }
+            }
+            while(true)
+            {
+                num2=prompt("Enter number between 1 t0 30");
+                if(num2>=1 && num2<=30)
+                {
+                    break;
+                }
+                else
+                {
+                    alert("wrong input");
+                }
+            }
+            while(true)
+            {
+                num3=prompt("Enter number between 1 t0 30");
+                if(num3>=1 && num3<=30)
+                {
+                    break;
+                }
+                else
+                {
+                    alert("wrong input");
+                }
+            }
+            print1="";
+            for(i=0;i<num1;i++)
+            {
+                print1=print1+"*";
+            }
+            print2="";
+            for(i=0;i<num2;i++)
+            {
+                print2=print2+"*";
+            }
+            print3="";
+            for(i=0;i<num3;i++)
+            {
+                print3=print3+"*";
+            }
+            document.getElementById("p1").innerHTML=print1;
+            document.getElementById("p2").innerHTML=print2;
+            document.getElementById("p3").innerHTML=print3;
+        </script>
+
+    </body>
+</html>

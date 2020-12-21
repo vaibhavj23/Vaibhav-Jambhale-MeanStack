@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="display"></div>
+        <script>
+            var list=[];
+            for(i=1;i<1000;i++)
+            {
+                list[i]=i;
+            }
+            var square_array=new Array(20);
+            square_array=list.filter(perfectSquare);
+            square_array.length=20;
+            document.getElementById("display").innerHTML="The first 20 perfect squares are <br>"+square_array;
+            function perfectSquare(num)
+            {
+                return (Math.sqrt(num)%1)===0;
+            }
+
+        </script>
+    </body>
+</html>

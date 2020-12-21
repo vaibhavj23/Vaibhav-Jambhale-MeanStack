@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Simple Sidebar - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><b>{{userType | uppercase}}</b></div>
+      <div class="list-group list-group-flush">
+        <a style="cursor: pointer;" (click)="viewProfile()" routerLink="/viewFarmerProfile" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a style="cursor: pointer;" (click)="publishCrop()" routerLink="/publishCrop" class="list-group-item list-group-item-action bg-light">Publish Crop</a>
+        <a style="cursor: pointer;" (click)="viewPublishedCrop()" routerLink="/viewPublishedCrops" class="list-group-item list-group-item-action bg-light">View Published Crops</a>
+        <a style="cursor: pointer;" (click)="viewSoldCrops()" routerLink="/viewSoldCrops" class="list-group-item list-group-item-action bg-light">Sold Crops</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <button class="btn btn-info" type="button" onclick="demo()" id="menu-toggle">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+    
+
+      <div id="maindiv" class="container-fluid text-black ">
+        <h2 *ngIf="isHomePage"  class="mt-4">Welcome {{farmerName}}</h2>
+        <div *ngIf="isProfilePage">
+          <h2>Profile Page</h2>
+          <p class="hint-text">You can view or edit your profile details here</p>
+        </div>
+        <div *ngIf="isPublishCropPage">
+          <h2>Publish Crop Page</h2>
+          <p class="hint-text">You can publish a new crop here</p>
+        </div>
+        <div *ngIf="isViewPublishedCropPage">
+          <h2>View Published Crops</h2>
+          <p class="hint-text">You can view and edit an already published crop here</p>
+        </div>
+        <div *ngIf="isViewSoldCropPage">
+          <h2>Sold Crops Page</h2>
+          <p class="hint-text">You can view and get receipt of an sold crops here</p>
+        </div>
+        
+        
+        
+        <!--menu selector-->
+        <app-farmer-profile  *ngIf="isProfilePage"></app-farmer-profile>
+        <app-publish-crop *ngIf="isPublishCropPage"></app-publish-crop>
+        <app-view-published-crops *ngIf="isViewPublishedCropPage"></app-view-published-crops>
+        <app-view-sold-crops *ngIf="isViewSoldCropPage"></app-view-sold-crops>
+
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+
+  <!-- Menu Toggle Script -->
+  
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <h3 id="array"></h3>
+        <button onclick="myFunction()">Find 1st even number</button>
+        <div id="display"></div>
+        <script>
+            var array=[3,5,2,4,1];
+            document.getElementById("array").innerHTML=array;
+            var i=0;
+            var j=array.length;
+            var k=1;
+            function find(array,isEven)
+            {
+                
+                    if(isEven(array[i]))
+                    {
+                        return array[i];
+                    }
+                    else{
+                        return find(array.slice(k,j),isEven);
+                    }
+                
+            };
+            function isEven(x)
+            {
+                if(x%2==0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            };
+            function myFunction()
+            {
+                var element=find(array,isEven);
+                document.getElementById("display").innerHTML="The first even element is "+element;
+                return false;
+            }
+        </script>
+    </body>
+</html>

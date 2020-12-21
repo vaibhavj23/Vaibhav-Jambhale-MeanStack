@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return splitNumbers();">
+            <input type="number" id="number" placeholder="enter number" required>
+            <input type="submit" value="Split Numbers">
+        </form>
+        <div id="display"></div>
+        <script>
+            function splitNumbers()
+            {
+                var number=document.getElementById("number").value;
+                var string_number=number.toString();
+                var split_array=string_number.split("");
+                document.getElementById("display").innerHTML=split_array;
+                return false;
+            }
+        </script>
+    </body>
+</html>

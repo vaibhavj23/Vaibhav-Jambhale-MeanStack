@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form>       
+             <input type="number" id="num" placeholder="Enter number of flips" required>
+            <button onclick=" return numHeads();">Click To Check</button>
+        </form>
+
+        <p id="demo"></p>
+
+        <script>
+            function numHeads(){
+                var count=0;
+                var forloop=0;
+                var end=document.getElementById("num").value;
+                do{
+                    end--;
+                    var num=Math.floor(Math.random() * 2);
+                    if(num===1)
+                    {
+                        count++;
+                    }
+                    forloop++;
+                    
+                }while(end>0);
+                document.getElementById("demo").innerHTML =count+" number of times head occurs";
+                return false;
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Page 1 question 2</h1>
+        <p>Open console to check the output</p>
+        <script>
+            var Rectangle=function(width,height)
+            {
+                this.width=width;
+                this.height=height;
+            };
+            var rect1= new Rectangle(20,30);
+            console.log("Rectangle 1 height: "+rect1.height);
+            console.log("Rectangle 1 width: "+rect1.width);
+            Rectangle.prototype.getArea=function(){
+                return (this.height)*(this.width);
+            };
+            console.log("Area of rectange 1 is :"+rect1.getArea());
+
+        </script>
+    </body>
+</html>

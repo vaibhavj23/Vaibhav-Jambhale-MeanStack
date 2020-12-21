@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Array Items</p>
+        <div id="display_string_array"></div>
+        <p>Click the button to get sum of array items not having q</p>
+
+        <button onclick="myFunction()">Try it</button>
+
+        <p id="demo"></p>
+
+        <script>
+            var string_array =  ["stop", "quit", "exit"];
+            document.getElementById("display_string_array").innerHTML=string_array;
+
+            function check_for_q(str) {
+                var q_present=0;
+                for(i=0;i<str.length;i++)
+                {
+                    if(str.charAt(i)!="q")
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        q_present=1;
+                        break;
+                    }
+                }
+                if(q_present)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                return true;
+            };
+            function add_array_items_length(total,str)
+            {
+                console.log(total);
+                console.log(str);
+                return total.length + str.length;
+            };
+            function myFunction() {
+                
+                var array_without_q = string_array.filter(check_for_q);
+                if(array_without_q.length==0)
+                {
+                    document.getElementById("demo").innerHTML="Sum of length is 0";
+                }
+                else if(array_without_q.length==1)
+                {
+                    document.getElementById("demo").innerHTML="Sum of length is "+array_without_q[0].length;
+                    return false;
+                }
+                var len= array_without_q.reduce(add_array_items_length);
+                    
+                document.getElementById("demo").innerHTML="Sum of length is "+len;
+            
+            }
+            
+        </script>
+
+    </body>
+</html>

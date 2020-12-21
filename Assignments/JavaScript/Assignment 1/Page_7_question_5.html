@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="Page_7_question_5.css">
+    </head>
+    <body>
+        <div id="help"></div>
+        <div id="form">
+            <form onsubmit="return getData();">
+                <label onmouseover="myOverFunction1()" onmouseout="helptext()" for="name">Name</label>
+                <input onmouseover="myOverFunction1()" onmouseout="helptext()" type="text" id="name" name="name" placeholder="Enter name" required>
+                <br>
+                <label onmouseover="myOverFunction2()" onmouseout="helptext()" for="email">Email</label>
+                <input onmouseover="myOverFunction2()" onmouseout="helptext()" type="email" id="email" name="email" placeholder="Enter mail id" required>
+                <br>
+                <p onmouseover="myOverFunction3()" onmouseout="helptext()"><b>Toppings:</b></p><br>
+                <input type="checkbox" id="extra_cheese" name="extra_cheese" value="extra_cheese">
+                <label for="extra_cheese">Extra Cheese</label>
+                <input type="checkbox" id="peperoni" name="peperoni" value="peperoni">
+                <label for="peperoni">Peperoni</label>
+                <input type="checkbox" id="olives" name="olives" value="olives">
+                <label for="olives">Olives</label>
+                <input type="checkbox" id="pepper" name="pepper" value="pepper">
+                <label for="pepper">Pepper</label>
+                <input type="checkbox" id="bacon" name="bacon" value="bacon">
+                <label for="bacon">Bacon</label>
+                <input type="checkbox" id="tomatoes" name="tomatoes" value="tomatoes">
+                <label for="tomatoes">Tomatoes</label>
+                <input type="checkbox" id="mushrooms" name="mushrooms" value="mushrooms">
+                <label for="mushrooms">Mushrooms</label><br>
+
+                <p onmouseover="myOverFunction4()" onmouseout="helptext()"><b>How to you want to get your pizza:</b></p>
+                <input type="radio" id="delivery" name="getpizza" value="yes" required>
+                <label for="delivery">Delivery</label>
+                <input type="radio" id="pickup" name="getpizza" value="no" required>
+                <label for="pickup">Pickup</label><br>
+
+                <label onmouseover="myOverFunction5()" onmouseout="helptext()" for="tip"><b>Tip?</b></label>
+                <select onmouseover="myOverFunction5()" onmouseout="helptext()"name="tip" id="tip">
+                    <option value=15>15%</option>
+                    <option value=20>20%</option>
+                    <option value=25>25%</option>
+                </select><br>
+
+                <label onmouseover="myOverFunction6()" onmouseout="helptext()" for="address"><b>Address</b></label><br>
+                <textarea onmouseover="myOverFunction6()" onmouseout="helptext()" name="address" id="address" cols="30" rows="10"></textarea><br>
+
+                <input onmouseover="myOverFunction7()" onmouseout="helptext()" type="submit" value="Submit">
+                <input onmouseover="myOverFunction8()" onmouseout="helptext()" type="reset" value="Reset">
+            </form>
+            <br>
+            <button onmouseover="myOverFunction9()" onmouseout="helptext()" id="show" disabled=true onclick="showSummary()">Show Summary</button>
+        </div>
+        <script src="Page_7_question_5.js"></script>
+        <div id="table"></div>
+    </body>
+</html>

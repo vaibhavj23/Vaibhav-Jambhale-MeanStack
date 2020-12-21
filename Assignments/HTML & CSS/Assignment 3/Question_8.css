@@ -1,0 +1,105 @@
+body{
+    font-family: "Roboto Condensed", sans-serif;
+    height: auto;
+    margin: 0px;
+    background: rgb(238, 238, 238)
+}
+
+main{
+    display: block;
+    background-color: #e0ffff;
+    max-width: 1000px;
+    height: auto;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 30px 0px 40px, rgba(0, 0, 0, 0.1) -30px 0px 40px;
+}
+
+.landing{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 20px;
+    margin:0;
+}
+
+.landing_text{
+    flex: 40%;
+    background-color: rgb(90, 99, 117);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 500px;
+}
+
+.landing_image{
+    flex: 60%;
+    background-image: url('/Images/photo1.jpg');
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    min-height: 500px;
+}
+
+.landing_content{
+    margin:50px 15px;
+    padding: 40px 20px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    
+}
+
+@media(max-width:800px)
+{
+    .landing_image,.landing_text{
+        flex: 100%;
+    }
+}
+
+.button{
+    padding: 10px 25px;
+    background-color: rgb(114, 163, 226);
+    text-align: center;
+    border-radius: 17px;
+    color: white;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: greenyellow;
+    color: black;
+}
+
+.content{
+    background-color: gainsboro;
+    color: blueviolet;
+    padding: 15px 20px;
+    text-align: center;
+    margin: 0;
+    margin-top: -5px;
+    line-height: 1.5em;
+}
+
+h3{
+    font-weight: 300;
+    color: rgb(34, 88, 236);
+    font-size: 1.3em;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin: 0;
+}
+
+.image{
+    margin: 0;
+}
+
+footer{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+}
+
+footer h1{
+    color: black;
+}

@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <h1>Number guessing game</h1>
+        <button onclick="startGame()">Start</button>
+        <h3 id="display"></h3>
+        <script>
+            function startGame()
+            {
+                var count=0;
+                var original_num=5;
+                var previous_number=0;
+                while(true)
+                {
+                    var number =Number(prompt("Guess the number(between 1 to 9) "));
+                    if(number<original_num)
+                    {
+                        alert("entered value is small...try again ");
+                    }
+                    else if(number>original_num)
+                    {
+                        alert("entered value is large...try again ");
+                    }
+                    else{
+                        alert("Congrats entered value is correct");
+                        break;
+                    }
+                    if(previous_number==number)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        previous_number=number;
+                        count++;
+                    }
+                }
+                document.getElementById("display").innerHTML="You took "+count+" tries to guess the number."
+            }
+        </script>
+    </body>
+</html>

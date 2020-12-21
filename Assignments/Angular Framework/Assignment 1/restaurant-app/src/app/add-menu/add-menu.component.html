@@ -1,0 +1,11 @@
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" novalidate>
+    
+    Menu Item  : <input type="text" name="menu_item"  ngModel>
+    <br>
+    <br>
+    Price : <input type="number" name="item_price" ngModel>
+    <br>
+    <br>
+    <input type = "submit" value = "submit">
+</form>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="array"></p>
+        <form onsubmit="return findElement();">
+            <input type="number" id="number" placeholder="Enter element to find" required>
+            <input type="submit" value="Find">
+        </form>
+        <h3 id="display"></h3>
+        <script>
+            var array=[23,12,56,78,43,28];
+            document.getElementById("array").innerHTML=array;
+            function findElement()
+            {
+                var flag=0;
+                var element_to_find=document.getElementById("number").value;
+                for(i=0;i<array.length;i++)
+                {
+                    if(array[i]==element_to_find)
+                    {
+                        flag=1;
+                        break;
+                    }
+                }
+                if(flag==1)
+                {
+                document.getElementById("display").innerHTML=element_to_find+" is present in th list";
+                }
+                else
+                {
+                    document.getElementById("display").innerHTML=element_to_find+" is not present in the list";
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>

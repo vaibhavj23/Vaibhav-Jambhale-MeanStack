@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Page 2 question 3</h2>
+        <p>open console to see output</p>
+
+        <script>
+            function person(fname,lname,age,skills,dateofbirth,address,married,profession)
+            {
+                this.fname=fname;
+                this.lname=lname;
+                this.age=age;
+                this.skills=skills;
+                this.dateofbirth=dateofbirth;
+                this.address=address;
+                this.married=married;
+                this.profession=profession;
+            };
+            var amithab=new person("amithab","bachan",22,["c"],"24/10/1996",{city:"hyderabad",pincode:"521185"},"false","sr analyst");
+            var abhisheik=Object.create(amithab,{
+                'fname': {
+                    value: "abhisheik", 
+                    writable: true, 
+                    enumerable: true
+                    },
+                'age': {
+                    value: 21, 
+                    writable: true, 
+                    enumerable: true
+                    },
+                'skills': {
+                    value: ["HTML"], 
+                    writable: true, 
+                    enumerable: true
+                    },
+                'dateofbirth': {
+                    value: "08/06/1997", 
+                    writable: true, 
+                    enumerable: true
+                    },
+                'married': {
+                    value: "false", 
+                    writable: true, 
+                    enumerable: true
+                    },
+                'profession': {
+                    value: "jr analyst", 
+                    writable: true, 
+                    enumerable: true
+                    },    
+                     });
+            
+                     
+                var Aaradhya=Object.create(abhisheik,{
+                    'fname': {
+                        value: "Aaradhya", 
+                        writable: true, 
+                        enumerable: true
+                        },
+                    'age': {
+                        value: 11, 
+                        writable: true, 
+                        enumerable: true
+                        },
+                    'skills': {
+                        value: ["drawing"], 
+                        writable: true, 
+                        enumerable: true
+                        },
+                    'dateofbirth': {
+                        value: "08/06/2008", 
+                        writable: true, 
+                        enumerable: true
+                        },
+                    'married': {
+                        value: "false", 
+                        writable: true, 
+                        enumerable: true
+                        },
+                    'profession': {
+                        value: "student", 
+                        writable: true, 
+                        enumerable: true
+                        },    
+                         });
+                    
+            
+            var print=function()
+            {
+                console.log(amithab);
+                console.log(abhisheik)
+                console.log("Abhisheik firstname: "+abhisheik.fname);
+                console.log("Aaradhya Lastname: "+Aaradhya.lname);
+                console.log(Aaradhya.address);
+                console.log("skills of aaradhya: "+Aaradhya.skills);
+            }();
+        </script>
+    </body>
+</html>

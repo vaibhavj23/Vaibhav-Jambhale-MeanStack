@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <p>Number of rolls to get six</p>
+        <button onclick="numRollsToGetSix()">Click To Check</button>
+
+        <p id="demo"></p>
+
+        <script>
+            function numRollsToGetSix(){
+                var count=0;
+                var end=0;
+                do{
+                    var num=(Math.floor(Math.random() * 6) + 1);
+                    if(num===6)
+                    {
+                        count++;
+                        end=1;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                    
+                }while(end!=1);
+                document.getElementById("demo").innerHTML =count;
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+    <body>
+        <form onsubmit="return findAnswer();">
+            <input type="number" id="number" placeholder="Enter number" required>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="display"></div>
+        <script>
+            function square(x)
+            {
+                return x*x;
+            };
+            function double(x)
+            {
+                return x*2;
+            };
+            function compose(f1,f2)
+            {
+                return function(x){
+                    return f1(f2(x));
+                };
+            };
+            function findAnswer()
+            {
+                var f1=compose(square,double);
+                var f2=compose(double,square);
+                var number=document.getElementById("number").value;
+                var f1_res=f1(number);
+                var f2_res=f2(number)
+                document.getElementById("display").innerHTML="Result of f1 is "+f1_res+" <br>Result of f2 is "+f2_res;
+                return false;
+            }
+            
+        </script>
+    </body>
+</html>

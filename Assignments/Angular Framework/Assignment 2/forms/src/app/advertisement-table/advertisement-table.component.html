@@ -1,0 +1,29 @@
+<h3 class="text-center">List of Advertisements</h3>
+
+<div class="container">
+    <!-- Search form -->
+    <input class="form-control" [(ngModel)]="searchText" type="text" placeholder="Search" aria-label="Search">
+    <br>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of advertisementArray | searchPipe:searchText">
+                <td>{{data.title}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.category}}</td>
+                <td>{{data.description}}</td>
+                <td><a><button (click)="onDelete(data)">Delete</button></a>&nbsp;
+                    
+                    <a><button (click)="onEdit(data)">Edit</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

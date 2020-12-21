@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            td:nth-child(even) {
+                background-color: lightgrey;
+            }
+            td:nth-child(odd){
+                background-color: darkgray;
+            }
+            table, td{
+                border:2px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+        <title>Q8</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td colspan="2" style="background-color: cyan;">top</td>
+            </tr>
+            <tr>
+                <td rowspan="2">left</td>
+                <td rowspan="2">right</td>
+            </tr>
+        </table>
+    </body>
+</html>

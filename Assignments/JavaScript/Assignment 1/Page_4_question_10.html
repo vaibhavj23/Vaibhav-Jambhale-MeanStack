@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Next 20 leap years</p>
+        <button onclick="find_leap_years()">Click Me</button>
+        <div id="display"></div>
+        <script>
+            function find_leap_years()
+            {
+                var date=new Date();
+                var current_year=date.getFullYear();
+                var count=0;
+                var leap_year_array=[];
+                while(count!=20)
+                {
+                    if(current_year%400==0)
+                    {
+                        leap_year_array.push(current_year);
+                        current_year++;
+                        count++;
+                    }
+                    else if(current_year%4==0 && current_year%100!=0)
+                    {
+                        leap_year_array.push(current_year);
+                        current_year++;
+                        count++;
+                    }
+                    else
+                    {
+                        current_year++;
+                    }
+                }
+                alert(leap_year_array);
+                document.getElementById("display").innerHTML="Next 20 leap years are <br>"+leap_year_array;
+            }
+        </script>
+    </body>
+</html>

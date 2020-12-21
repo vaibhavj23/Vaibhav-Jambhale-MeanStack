@@ -1,0 +1,289 @@
+body{
+    margin: 0;
+    background-image: url('/Images/restaurant-iamge.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main{
+    display: grid;
+    margin: 25px 30px;
+    grid-gap:8px;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: minmax(50px,auto);
+    background: transparent;
+}
+
+main > div{
+    background: transparent;
+    margin: 0px 10px;
+    color: white;
+}
+
+.nav{
+    display: flex;
+    grid-column: 1/5;
+    flex-wrap: wrap;
+    grid-row: 1/2;
+    justify-content: space-around;
+}
+
+.nav li{
+    list-style-type: none;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.nav li a{
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    flex: 1;
+    background-color: rgb(199, 36, 158);
+    font-family: URW Chancery L, cursive;
+    border-radius: 25px;
+}
+
+.landing{
+    grid-column: 1/5;
+    grid-row: 2/5;
+    justify-items: center;
+}
+
+.landing_image{
+    background-image: url('/Images/landing_restaurant.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 667px;
+    max-width: 85%;
+    opacity: 0.8;
+    border-radius: 40px;
+}
+
+
+.landing_image h2{
+    background: transparent;
+    text-align: left;
+    font-family: URW Chancery L, cursive;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 50px;
+    padding: 20px 20px;
+    color: rgb(219, 204, 198);
+}
+
+.landing_image h2 span{
+    font-size: 1.25em;
+    font-weight: 500;
+}
+
+.food-heading{
+    grid-column: 1/5;
+    grid-row: 5/6;
+    text-align: center;
+    color: rgb(224, 177, 22);
+    font-family: URW Chancery L, cursive;
+}
+
+.food-heading h1{
+    display: inline-block;
+    background-color: rgb(173, 50, 91);
+    padding: 10px 25px;
+    border-radius: 30px;
+}
+  
+.food-images{
+    grid-column: 1/5;
+    grid-row: 6/10;
+    display: grid;
+    grid-gap:15px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: minmax(20px,auto);
+    padding: 0px 0px;
+    justify-items: center;
+}
+
+.food-images div{
+    background-color: #955251;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    text-align: center;
+    margin: 10px 30px;
+    color: white;
+    width: min-content;
+}
+
+.special-food img{
+    margin: 5px;
+}
+
+.special-food h2{
+    margin: 5px;
+    font-family: URW Chancery L, cursive;
+}
+
+.beer-heading{
+    grid-column: 1/5;
+    grid-row: 10/11;
+    text-align: center;
+    color: rgb(68, 200, 209);
+    font-family: URW Chancery L, cursive;
+}
+
+.beer-heading h1{
+    display: inline-block;
+    background-color: rebeccapurple;
+    padding: 10px 25px;
+    border-radius: 30px;
+}
+
+.beer-images{
+    grid-column: 1/5;
+    grid-row: 11/16;
+    display: grid;
+    grid-gap:15px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: minmax(20px,auto);
+    padding: 0px 0px;
+    justify-items: center;
+}
+
+.beer-images div{
+    background-color: #161414;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    text-align: center;
+    margin: 10px 30px;
+    color: rgb(204, 233, 43);
+    width: min-content;
+}
+
+.beer-images img{
+    margin: 5px;
+}
+
+.beer-images h2{
+    margin: 5px;
+    font-family: URW Chancery L, cursive;
+}
+
+.price-heading{
+    grid-column: 1/5;
+    grid-row: 16/17;
+    text-align: center;
+    color: whitesmoke;
+    font-family: URW Chancery L, cursive;
+}
+
+.price-heading h1{
+    display: inline-block;
+    background-color: rgb(125, 128, 125);
+    padding: 10px 25px;
+    border-radius: 30px;
+}
+
+
+.price-list{
+    grid-column: 1/5;
+    grid-row: 17/22;
+    display: grid;
+    grid-gap:15px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: minmax(20px,auto);
+    padding: 0px 0px;
+    justify-items: center;
+}
+
+.price-list div{
+    padding: 5px;
+    text-align: center;
+    margin: 10px 30px;
+    color: black;
+    width: 70%;
+}
+
+table{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td,th {
+    border-radius: 12px;
+    padding: 8px;
+}
+  
+tr:nth-child(odd){
+    background-color: rgb(52, 70, 87);
+    color: #f2f2f2;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+  
+tr:hover {background-color: rgb(92, 188, 212);}
+
+tr:nth-child(even):hover {color:whitesmoke;}
+  
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #6f289e;
+    color: white;
+}
+  
+
+.images{
+    grid-column: 1/5;
+    grid-row: 22/27;
+    display: grid;
+    row-gap: 10px;
+    column-gap: 0px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: minmax(20px,auto);
+    padding: 0px 0px;
+    justify-items: center;
+}
+
+.images div{
+    background-color:transparent;
+    padding: 0px;
+    text-align: center;
+    margin: 10px 30px;
+    color: white;
+    width: min-content;
+}
+.restaurant-images img{
+    margin: 0;
+    border-radius: 15px;
+}
+
+.address{
+    grid-column: 1/5;
+    grid-row: 27/28;
+    text-align: center;
+    color: whitesmoke;
+    font-family: URW Chancery L, cursive;
+    margin-top: 15px;
+}
+
+.address address{
+    display: inline-block;
+    background-color: rgb(221, 41, 116);
+    padding: 10px 100px;
+    border-radius: 30px;
+    font-size: 1.2em;
+}
+
+.address address a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.3em;
+}
+
+.address address a:hover{
+    color:black;
+}

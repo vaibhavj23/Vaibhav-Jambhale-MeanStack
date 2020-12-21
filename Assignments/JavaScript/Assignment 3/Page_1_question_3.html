@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Page 1 question 3</h1>
+        <p>Open console to check the output</p>
+        <p>We get area 200 because when we re-assign height property it overwrites the initial height value
+            ,and this happens because we use <b>"this"</b> keyword in constructor.
+        </p>
+        <script>
+            var Rectangle=function(width,height)
+            {
+                this.width=width;
+                this.height=height;
+                this.getArea=function(){
+                    return (this.height)*(this.width);
+                }
+            };
+            var rect1= new Rectangle(4,5);
+            console.log("Rectangle 1 height: "+rect1.height);
+            console.log("Rectangle 1 width: "+rect1.width);
+            rect1.height=50;
+            console.log("Area of rectange 1 is :"+rect1.getArea());
+
+        </script>
+    </body>
+</html>

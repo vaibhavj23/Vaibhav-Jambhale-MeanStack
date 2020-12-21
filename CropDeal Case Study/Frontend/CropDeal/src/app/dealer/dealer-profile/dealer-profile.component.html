@@ -1,0 +1,210 @@
+<div id="div1" *ngIf="!displayEdit">
+    <button class="btn btn-success" (click)="displayEditPage()">Edit Profile</button>
+    <table class="table table-borderless table-striped">
+        <tbody>
+            <h5>Personal Info</h5>
+            <tr>
+                <th scope="row">Name</th>
+                <td>{{userObj.firstName}} {{userObj.lastName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email Id</th>
+                <td>{{userObj.email}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Phone Number</th>
+                <td>{{userObj.phoneNumber}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-borderless table-striped">
+        <tbody>
+            <h5>Address</h5>
+            <tr>
+                <th scope="row">Landmark/Street</th>
+                <td>{{userObj.address.landmark}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Area/Village</th>
+                <td>{{userObj.address.area}}</td>
+            </tr>
+            <tr>
+                <th scope="row">City</th>
+                <td>{{userObj.address.city}}</td>
+            </tr>
+            <tr>
+                <th scope="row">State</th>
+                <td>{{userObj.address.state}}</td>
+            </tr>
+            <tr>
+                <th scope="row">PIN Code</th>
+                <td>{{userObj.address.pinCode}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-borderless table-striped">
+        <tbody>
+            <h5>Bank Details</h5>
+            <tr>
+                <th scope="row">Bank Name</th>
+                <td>{{userObj.bankDetails.bankName}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Account Number</th>
+                <td>{{userObj.bankDetails.bankAccNo}}</td>
+            </tr>
+            <tr>
+                <th scope="row">IFSC Code</th>
+                <td>{{userObj.bankDetails.bankIfscCode}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="div2" *ngIf="displayEdit">
+    <button class="btn btn-success" (click)="displayEditPage()">Cancel Edit</button>
+    <br><br>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control" id="staticEmail" formControlName="email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="firstName" required="required">
+                <div *ngIf="updateFormControl.firstName.invalid && (updateFormControl.firstName.dirty || 
+                updateFormControl.firstName.touched)" class="text-danger">
+
+                    <div *ngIf="updateFormControl.firstName.errors.required">
+                        First Name is Mandatory.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="lastName">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Phone No</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="phoneNumber" pattern="[789][0-9]{9}"
+                    required="required">
+                    <div *ngIf="updateFormControl.phoneNumber.invalid && (updateFormControl.phoneNumber.dirty || 
+                    updateFormControl.phoneNumber.touched)" class="text-danger">
+    
+                        <div *ngIf="updateFormControl.phoneNumber.errors.required">
+                            Phone Number is required.
+                        </div>
+                        <div *ngIf="updateFormControl.phoneNumber.errors.pattern">
+                            Please enter correct phone number.
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div formGroupName="address">
+            <h5>Address</h5><br>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Landmark/Street</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="landmark">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Area/Village</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="area"
+                        required="required">
+                        <div *ngIf="addressControl.controls.area.invalid && 
+                        (addressControl.controls.area.dirty || addressControl.controls.area.touched)" class="text-danger">
+
+                            <div *ngIf="addressControl.controls.area.errors.required">
+                                Please Enter Area or Village 
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="city"
+                        required="required">
+                        <div *ngIf="addressControl.controls.city.invalid && 
+                        (addressControl.controls.city.dirty || addressControl.controls.city.touched)" class="text-danger">
+
+                            <div *ngIf="addressControl.controls.city.errors.required">
+                                Please Enter City or Town.
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-10">
+                    <select class="selectpicker show-menu-arrow form-control" formControlName="state" name="state" 
+                    required>
+                        <option *ngFor="let state of stateArray" value="{{state}}">{{state}}</option>
+                    </select>
+                    <div *ngIf="addressControl.controls.state.invalid && 
+                        (addressControl.controls.state.dirty || addressControl.controls.state.touched)" class="text-danger">
+
+                            <div *ngIf="addressControl.controls.state.errors.required">
+                                Please Select State.
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">PIN Code</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="pinCode" pattern="[0-9]{6}" maxlength="6"
+                     required="required">
+                     <div *ngIf="addressControl.controls.pinCode.invalid && 
+                        (addressControl.controls.pinCode.dirty || addressControl.controls.pinCode.touched)" class="text-danger">
+
+                            <div *ngIf="addressControl.controls.pinCode.errors.required">
+                                Please enter the PIN Code.
+                            </div>
+                            <div *ngIf="addressControl.controls.pinCode.errors.pattern">
+                                Please enter a valid PIN code
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div formGroupName="bankDetails">
+            <h5>Bank Details (Optional)</h5><br>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Bank Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="bankName">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Bank Account No</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="bankAccNo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">IFSC Code</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="bankIfscCode">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <button id="button1" type="submit" [disabled]="updateForm.invalid" class="btn btn-success btn-lg ">Updatde Profile</button>
+        </div>
+    </form>
+</div>

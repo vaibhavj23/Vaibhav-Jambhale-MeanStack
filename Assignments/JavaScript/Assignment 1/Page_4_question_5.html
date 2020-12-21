@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form  onsubmit="return findSum();">
+            <input type="number" id="num" placeholder="Enter a number to find sum upto" required>
+            <input type="submit" value="Submit">
+        </form>
+            <div id="print"></div>
+            <script>
+                function findSum(){
+                    var num= document.getElementById("num").value;
+                    var sum=0;
+                    for(i=1;i<=num;i++)
+                    {
+                        if(i%3==0 || i%5==0)
+                        {
+                            sum=sum+i;
+                        }
+                    }
+                    document.getElementById("print").innerHTML="The sum from 1 to "+num+" is "+sum;
+                    return false;
+                }
+            </script>
+    </body>
+</html>

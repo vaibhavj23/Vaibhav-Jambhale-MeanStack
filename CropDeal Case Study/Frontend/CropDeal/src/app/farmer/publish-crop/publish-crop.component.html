@@ -1,0 +1,165 @@
+<div id="div1">
+    <form [formGroup]="publishCropForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+        
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Crop Type</label>
+            <div class="col-sm-10">
+                <select #opt class="selectpicker show-menu-arrow form-control" name="cropType" (change)="assignCropName(opt.value)" formControlName="cropType" required>
+                    <option value="abc" disabled>Select Crop Type</option>
+                    <option *ngFor="let crop of cropTypeArray" value="{{crop}}">{{crop}}</option>
+                </select> 
+                <div *ngIf="publishFormControl.cropType.invalid && (publishFormControl.cropType.dirty || publishFormControl.cropType.touched)" class="text-danger">
+
+                    <div *ngIf="publishFormControl.cropType.errors.required">
+                        Please select Crop Type.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Crop Name</label>
+            <div class="col-sm-10">
+                <select class="selectpicker show-menu-arrow form-control" formControlName="cropName" name="cropName" required>
+                    <option *ngFor="let cropName of cropNameArray" value="{{cropName}}">{{cropName}}</option>
+                </select>
+                <div *ngIf="publishFormControl.cropName.invalid && (publishFormControl.cropName.dirty || publishFormControl.cropName.touched)" class="text-danger">
+
+                    <div *ngIf="publishFormControl.cropName.errors.required">
+                        Please select Crop Name.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Quantity Available (Kg)</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" name="quantityAvailable" formControlName="quantityAvailable" required="required">
+                <div *ngIf="publishFormControl.quantityAvailable.invalid && (publishFormControl.quantityAvailable.dirty || publishFormControl.quantityAvailable.touched)" class="text-danger">
+
+                    <div *ngIf="publishFormControl.quantityAvailable.errors.required">
+                        Please enter quantity available.
+                    </div>
+                    <div *ngIf="publishFormControl.quantityAvailable.errors.min">
+                        Please enter positive value.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Price / Kg (Rs)</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" name="pricePerKg" formControlName="pricePerKg" required="required">
+                <div *ngIf="publishFormControl.pricePerKg.invalid && (publishFormControl.pricePerKg.dirty || publishFormControl.pricePerKg.touched)" class="text-danger">
+
+                    <div *ngIf="publishFormControl.pricePerKg.errors.required">
+                        Please enter price per Kg.
+                    </div>
+                    <div *ngIf="publishFormControl.pricePerKg.errors.min">
+                        Please enter positive value.
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div formGroupName="cropLocation">
+            <h5>Crop Location</h5><br>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Landmark</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="landmark" name="landmark">
+                </div>
+            </div>
+             <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Area/Village</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="area" name="area"
+                        required="required">
+                        <div *ngIf="cropLocationControl.controls.area.invalid && 
+                        (cropLocationControl.controls.area.dirty || cropLocationControl.controls.area.touched)" class="text-danger">
+
+                            <div *ngIf="cropLocationControl.controls.area.errors.required">
+                                Please Enter Area or Village of Crop Location.
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="city" name="city"
+                        required="required">
+                        <div *ngIf="cropLocationControl.controls.city.invalid && 
+                        (cropLocationControl.controls.city.dirty || cropLocationControl.controls.city.touched)" class="text-danger">
+
+                            <div *ngIf="cropLocationControl.controls.city.errors.required">
+                                Please Enter City where Crop is located.
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-10">
+                    <select class="selectpicker show-menu-arrow form-control" formControlName="state" name="state" 
+                    required>
+                        <option *ngFor="let state of stateArray" value="{{state}}">{{state}}</option>
+                    </select>
+                    <div *ngIf="cropLocationControl.controls.state.invalid && 
+                        (cropLocationControl.controls.state.dirty || cropLocationControl.controls.state.touched)" class="text-danger">
+
+                            <div *ngIf="cropLocationControl.controls.state.errors.required">
+                                Please Select State where Crop is located.
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">PIN Code</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="pinCode" formControlName="pinCode" pattern="[0-9]{6}" maxlength="6"
+                     required="required">
+                     <div *ngIf="cropLocationControl.controls.pinCode.invalid && 
+                        (cropLocationControl.controls.pinCode.dirty || cropLocationControl.controls.pinCode.touched)" class="text-danger">
+
+                            <div *ngIf="cropLocationControl.controls.pinCode.errors.required">
+                                Please enter the PIN Code.
+                            </div>
+                            <div *ngIf="cropLocationControl.controls.pinCode.errors.pattern">
+                                Please enter a valid PIN code
+                            </div>
+
+                        </div>
+                </div>
+            </div> 
+        </div> 
+           <div class="form-group row">
+            <button id="button1" type="submit" [disabled]="publishCropForm.invalid" class="btn btn-success btn-lg ">Publish</button>
+        </div>
+    </form> 
+</div>
+
+
+<!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" [ngClass]="{'show' : showModal}" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="showModal=false">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success"><span class="glyphicon glyphicon-warning-sign"></span>
+                {{publishResponse}}
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="showModal=false">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+ 

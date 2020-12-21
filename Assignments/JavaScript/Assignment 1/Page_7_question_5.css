@@ -1,0 +1,52 @@
+input[text],input[email],input[checkbox],input[radio]
+{
+    width: 600px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    background-color: #eee;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    background-color: #eee;
+}
+
+table,th,tr,td{
+    margin: 20px;
+    border: 1px solid black;
+}
+
+tr:nth-child(even){
+    background-color: #eee;
+}
+
+tr:nth-child(odd){
+    background-color: #eee;
+}
+
+th{
+    color: white;
+    background-color: black;
+}
+
+#help{
+    position: relative;
+    left: 600px;
+    height: 60px;
+    width: 220px;
+    border: 1px solid green;
+    color: rgb(209, 78, 26);
+    font-size: 1.4em;
+}
+
+#form{
+    width: fit-content;
+    top: 5px;
+    position: absolute;
+}
+
+#table{
+    position: relative;
+    top: 350px;
+}

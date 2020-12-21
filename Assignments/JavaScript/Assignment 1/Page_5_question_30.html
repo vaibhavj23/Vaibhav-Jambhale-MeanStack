@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return convert();">
+            <input type="text" id="text" placeholder="enter text to convert" required>
+            <input type="submit" value="To Pig Latin"> 
+            <button onclick="english()">To English</button>
+        </form>
+        <div id="print"></div>
+        <div id="english"></div>
+        <script>
+            var original_str="";
+            function convert()
+            {
+                original_str=document.getElementById("text").value;
+                var array=original_str.split(" ");
+                var len=array.length;
+                first_char="";
+                mid_string="";
+                final_string="";
+                final_text="";
+                for(i=0;i<len;i++)
+                {
+                    first_char=array[i].charAt(0);
+                    mid_string=array[i].slice(1,);
+                    final_string=mid_string+first_char+"ay ";
+                    array[i]=final_string;
+                }
+                for(j=0;j<len;j++)
+                {
+                    final_text=final_text+array[j];
+                }
+                final_text=final_text.toLowerCase();
+                document.getElementById("print").innerHTML="<b>In Pig Latin:  </b>"+final_text;
+                return false;
+            };
+            function english()
+            {
+                document.getElementById("english").innerHTML="<b>In English:  </b>"+original_str;
+            }
+
+        </script>
+    </body>
+</html>

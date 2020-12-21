@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return display();">
+            <input type="text" id="text" placeholder="enter text to display" required>
+            <input type="submit" value="Display"> 
+        </form>
+        <div id="print"></div>
+        <script>
+            function display()
+            {
+                var array=document.getElementById("text").value.split(" ");
+                var len=array.length;
+                var str="*********<br>";
+                for(i=0;i<len;i++)
+                {
+                    str=str+"* ";
+                    str=str+array[i];
+                    str=str+" * <br>"; 
+                }
+                str=str+"*********";
+                document.getElementById("print").innerHTML=str;
+                return false;
+            }
+        </script>
+    </body>
+</html>

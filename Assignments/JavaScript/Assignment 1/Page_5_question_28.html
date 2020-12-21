@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="array"></p>
+        <p>Binary Search</p>
+        <form onsubmit="return findElement();">
+            <input type="number" id="number" placeholder="enter number to find in array" required><br><br>
+            <input type="submit" value="Find">
+        </form>
+        <h3 id="display"></h3>
+        <script>
+            var array=[6,2,3,4,5,1];
+            document.getElementById("array").innerHTML=array;
+            
+            function findElement()
+            {  
+                array.sort();
+                var find=Number(document.getElementById("number").value);
+                var first=0;
+                var last=array.length-1;
+                var middle=0
+                var result=false;
+                while(first<=last)
+                {
+                    middle=Math.floor(first+(last-first)/2);
+                    if(array[middle]==find)
+                    {
+                        result=true;
+                        break;
+                    }
+                    else if(find>array[middle])
+                    {
+                        first=middle+1;
+                    }
+                    else
+                    {
+                        last=middle-1;
+                    }
+                }
+                if(result)
+                {
+                    document.getElementById("display").innerHTML=find+" is present in the array";
+                }
+                else
+                {
+                    document.getElementById("display").innerHTML=find+" is not found in the array";
+
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            tr:nth-child(odd) td:nth-child(odd){
+                background-color: lightgrey;
+            }
+            tr:nth-child(even) td:nth-child(even){
+                background-color: lightgrey;
+            }
+            tr:nth-child(odd) td:nth-child(even){
+                background-color: darkgray;
+            }
+            tr:nth-child(even) td:nth-child(odd){
+                background-color: darkgray;
+            }
+            table, td{
+                border:2px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+        <title>Q9</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>topleft</td>
+                <td>topright</td>
+            </tr>
+            <tr>
+                <td rowspan="2">botleft</td>
+                <td rowspan="2">botright</td>
+            </tr>
+        </table>
+    </body>
+</html>

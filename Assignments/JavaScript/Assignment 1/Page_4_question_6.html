@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return calculate();">
+            <input type="number" id="num" placeholder="ente number" required><br>
+            <input type="radio" name="operation" value="sum" required>Calculate Sum
+            <input type="radio" name="operation" value="product" required>Calculate Product<br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="display"></div>
+        <script>
+            function calculate()
+            {
+                var num=document.getElementById("num").value;
+                var operation=document.getElementsByName("operation").value;
+                do_operation="";
+                for(i=0;i<operation.length;i++)
+                {
+                    if(operation[i].checked)
+                    {
+                        do_operation=operation[i].value;
+                    }
+                }
+                var sum=0;
+                var product=1;
+                if(do_operation=="sum")
+                {
+                    for(i=1;i<=num;i++)
+                    {
+                        sum=sum+i;
+                    }
+                    document.getElementById("display").innerHTML="The sum of numbers from 1 to "+num+" is "+sum;
+                }
+                else if(do_operation=="product")
+                {
+                    for(i=1;i<=num;i++)
+                    {
+                        product=product*i;
+                    }
+                    document.getElementById("display").innerHTML="The product of numbers from 1 to "+num+" is "+product;
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,209 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <div id="viewPage"></div>
+        <table id="mytable" class="table table-bordred table-striped">
+          <thead>
+            <th>Crop Type</th>
+            <th>Crop Name</th>
+            <th>Crop Location</th>
+            <th>Published Date</th>
+            <th>Quantity</th>
+            <th>Price/Kg</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let crop of publishedCropsArray">
+              <td>{{crop.cropType}}</td>
+              <td>{{crop.cropName}}</td>
+              <td>{{crop.cropLocation.landmark}},{{crop.cropLocation.area}},{{crop.cropLocation.city}}
+                {{crop.cropLocation.state}} {{crop.cropLocation.pinCode}}</td>
+              <td>{{crop.publishedDate | date}}</td>
+              <td>{{crop.quantityAvailable}}</td>
+              <td>{{crop.pricePerKg}}</td>
+              <td>
+                <p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"
+                    (click)="onEdit(crop)" data-title="Edit" data-toggle="modal" data-target="#edit">
+                    <i class="fa fa-pencil"></i></button></p>
+              </td>
+              <td>
+                <p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs"
+                    (click)="onDelete(crop)" data-title="Delete" data-toggle="modal" data-target="#delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i></button></p>
+              </td>
+            </tr>
+
+
+          </tbody>
+
+        </table>
+
+        <div class="clearfix"></div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-left" id="Heading">Edit Crop Details</h4>
+        <button type="button" class="close text-right" data-dismiss="modal" aria-hidden="true">
+          x</button>
+      </div>
+      <form [formGroup]="editCropForm" ngNativeValidate>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class=" column">
+              <label class="form-label">Crop Type</label>
+              <input class="form-control" formControlName="cropType" type="text" disabled required>
+            </div>&nbsp; &nbsp;
+            <div class="column">
+              <label class="form-label">Crop Name</label>
+              <input class="form-control" formControlName="cropName" type="text" disabled required>
+            </div>
+          </div>
+          <div class=" row">
+            <div class="column">
+              <label class="form-label">Quantity Available (Kg)</label>
+              <input type="number" class="form-control" formControlName="quantityAvailable" required="required">
+              <div
+                *ngIf="editFormControl.quantityAvailable.invalid && (editFormControl.quantityAvailable.dirty || editFormControl.quantityAvailable.touched)"
+                class="text-danger">
+
+                <div *ngIf="editFormControl.quantityAvailable.errors.required">
+                  Please enter quantity available.
+                </div>
+                <div *ngIf="editFormControl.quantityAvailable.errors.min">
+                  Please enter positive value.
+                </div>
+              </div>
+            </div>&nbsp; &nbsp;
+            <div class="column">
+              <label class="form-label">Price / Kg (Rs)</label>
+              <input type="number" class="form-control" formControlName="pricePerKg" required="required">
+              <div
+                *ngIf="editFormControl.pricePerKg.invalid && (editFormControl.pricePerKg.dirty || editFormControl.pricePerKg.touched)"
+                class="text-danger">
+
+                <div *ngIf="editFormControl.pricePerKg.errors.required">
+                  Please enter price per Kg.
+                </div>
+                <div *ngIf="editFormControl.pricePerKg.errors.min">
+                  Please enter positive value.
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div formGroupName="cropLocation">
+            Crop Location<br>
+            <div class="form-group">
+              <label class="form-label">Landmark/Street</label>
+              <input type="text" class="form-control" formControlName="landmark">
+            </div>
+            <div class="row">
+              <div class="column">
+                <label class="form-label">Area/Village</label>
+                <input type="text" class="form-control" formControlName="area" required="required">
+                <div *ngIf="cropLocationControl.controls.area.invalid && 
+                        (cropLocationControl.controls.area.dirty || cropLocationControl.controls.area.touched)"
+                  class="text-danger">
+
+                  <div *ngIf="cropLocationControl.controls.area.errors.required">
+                    Please Enter Area or Village of Crop Location.
+                  </div>
+                </div>
+              </div>&nbsp; &nbsp;
+              <div class="column">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" formControlName="city" required="required">
+                <div *ngIf="cropLocationControl.controls.city.invalid && 
+                        (cropLocationControl.controls.city.dirty || cropLocationControl.controls.city.touched)"
+                  class="text-danger">
+
+                  <div *ngIf="cropLocationControl.controls.city.errors.required">
+                    Please Enter City where Crop is located.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column">
+                <label class="form-label">State</label>
+                <select class="selectpicker show-menu-arrow form-control" formControlName="state" name="state" required>
+                  <option *ngFor="let state of stateArray" value="{{state}}">{{state}}</option>
+                </select>
+                <div *ngIf="cropLocationControl.controls.state.invalid && 
+                        (cropLocationControl.controls.state.dirty || cropLocationControl.controls.state.touched)"
+                  class="text-danger">
+
+                  <div *ngIf="cropLocationControl.controls.state.errors.required">
+                    Please Select State where Crop is located.
+                  </div>
+                </div>
+              </div>&nbsp; &nbsp;
+              <div class="column">
+                <label class="form-label">PIN Code</label>
+                <input type="text" class="form-control" formControlName="pinCode" pattern="[0-9]{6}" maxlength="6"
+                  required="required">
+                <div *ngIf="cropLocationControl.controls.pinCode.invalid && 
+                        (cropLocationControl.controls.pinCode.dirty || cropLocationControl.controls.pinCode.touched)"
+                  class="text-danger">
+
+                  <div *ngIf="cropLocationControl.controls.pinCode.errors.required">
+                    Please enter the PIN Code.
+                  </div>
+                  <div *ngIf="cropLocationControl.controls.pinCode.errors.pattern">
+                    Please enter a valid PIN code
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-success btn-lg" (click)="onSubmit()" [disabled]="editCropForm.invalid" data-dismiss="modal"
+            style="width: 100%;">Update</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+            class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title custom_align" id="Heading">Delete this crop</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to
+          delete this Record?</div>
+
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="btn btn-success" (click)="deleteRecord()" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"> No</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

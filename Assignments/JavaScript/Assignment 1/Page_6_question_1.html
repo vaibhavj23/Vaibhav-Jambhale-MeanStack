@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return todegree();">
+            <input type="text" id="value" placeholder="Enter temperature">
+            <p style="color: red;" id="error"></p>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="display"></div>
+
+        <script>
+            function todegree(){
+                var farhenheit=document.getElementById("value").value;
+                if(farhenheit=="" || isNaN(farhenheit))
+                {
+                    document.getElementById("error").innerHTML="Invalid Input...please enter a number.";
+                    return false;
+                }
+                else
+                {
+                    var celsius=((Number(farhenheit))-32)*(5/9);
+                    document.getElementById("error").remove();
+                    document.getElementById("display").innerHTML="The temperature is "+celsius+" in celsius";
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>

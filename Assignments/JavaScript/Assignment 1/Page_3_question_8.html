@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form onsubmit="return isEven();">
+            <input type="number" id="num" placeholder="enter number" required>
+            <input type="submit" value="Check isEven"> 
+        </form>
+        <div id="display"></div>
+        <script>
+            function isEven()
+            {
+                var num= document.getElementById("num").value;
+                if(num%2===0)
+                {
+                    document.getElementById("display").innerHTML=num+" is even number";
+                }
+                else
+                {
+                    document.getElementById("display").innerHTML=num+" is not a even number";
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>

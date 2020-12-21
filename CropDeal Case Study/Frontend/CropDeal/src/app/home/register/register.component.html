@@ -1,0 +1,176 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="signup-form">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+            <h2>Register</h2>
+            <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+            <div class="form-group">
+                Select User Type &nbsp;
+                <input type="radio" formControlName="userType" value="dealer" name="userType"
+                    required="required">&nbsp;<b>Dealer</b>&nbsp;
+                <input type="radio" formControlName="userType" value="farmer" name="userType">&nbsp;<b>Farmer</b>
+
+                <div *ngIf="registerFormControl.userType.invalid && (registerFormControl.userType.dirty || 
+                    registerFormControl.userType.touched)" class="text-danger">
+
+                    <div *ngIf="registerFormControl.userType.errors.required">
+                        Please select User Type
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name"
+                    required="required">
+                <div *ngIf="registerFormControl.firstName.invalid && (registerFormControl.firstName.dirty || 
+                    registerFormControl.firstName.touched)" class="text-danger">
+
+                    <div *ngIf="registerFormControl.firstName.errors.required">
+                        First Name is Mandatory.
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" formControlName="email" placeholder="Email"
+                    required="required">
+
+                    <div *ngIf="registerFormControl.email.invalid && (registerFormControl.email.dirty || 
+                    registerFormControl.email.touched)" class="text-danger">
+
+                    <div *ngIf="registerFormControl.email.errors.required">
+                        Email id is required.
+                    </div>
+                    <div *ngIf="registerFormControl.email.errors.email">
+                        Please enter a valid email id.
+                    </div>
+                    <div *ngIf="registerFormControl.email.errors.emailPresent">
+                        Email id already present...try with different email.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                    required="required">
+                <div *ngIf="registerFormControl.password.invalid && (registerFormControl.password.dirty || 
+                    registerFormControl.password.touched)" class="text-danger">
+
+                    <div *ngIf="registerFormControl.password.errors.required">
+                        Please enter a password
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Phone Number"
+                    pattern="[789][0-9]{9}" required="required">
+                <div *ngIf="registerFormControl.phoneNumber.invalid && (registerFormControl.phoneNumber.dirty || 
+                    registerFormControl.phoneNumber.touched)" class="text-danger">
+
+                    <div *ngIf="registerFormControl.phoneNumber.errors.required">
+                        Phone Number is required.
+                    </div>
+                    <div *ngIf="registerFormControl.phoneNumber.errors.pattern">
+                        Please enter correct phone number.
+                    </div>
+                </div>
+            </div>
+            <div formGroupName="address">
+                Address
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="landmark" placeholder="landmark/Street">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="area" placeholder="Area/village Name"
+                        required="required">
+                    <div *ngIf="addressControl.controls.area.invalid && 
+                        (addressControl.controls.area.dirty || addressControl.controls.area.touched)"
+                        class="text-danger">
+
+                        <div *ngIf="addressControl.controls.area.errors.required">
+                            Please Enter Area or Village
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="city" placeholder="City Name"
+                        required="required">
+                    <div *ngIf="addressControl.controls.city.invalid && 
+                        (addressControl.controls.city.dirty || addressControl.controls.city.touched)"
+                        class="text-danger">
+
+                        <div *ngIf="addressControl.controls.city.errors.required">
+                            Please Enter City or Town.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                
+                        <select class="selectpicker form-control" formControlName="state" name="state"
+                            required>
+                            <option value="" selected disabled>Please Select State</option>
+                            <option *ngFor="let state of stateArray" value="{{state}}">{{state}}</option>
+                        </select>
+                        <div *ngIf="addressControl.controls.state.invalid && 
+                                (addressControl.controls.state.dirty || addressControl.controls.state.touched)"
+                            class="text-danger">
+
+                            <div *ngIf="addressControl.controls.state.errors.required">
+                                Please Select State.
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="pinCode" pattern="[0-9]{6}" maxlength="6"
+                        placeholder="PIN Code" required="required">
+                    <div *ngIf="addressControl.controls.pinCode.invalid && 
+                        (addressControl.controls.pinCode.dirty || addressControl.controls.pinCode.touched)"
+                        class="text-danger">
+
+                        <div *ngIf="addressControl.controls.pinCode.errors.required">
+                            Please enter the PIN Code.
+                        </div>
+                        <div *ngIf="addressControl.controls.pinCode.errors.pattern">
+                            Please enter a valid PIN code
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div formGroupName="bankDetails">
+                Bank Details (Optional)
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="bankAccNo"
+                        placeholder="Bank Account Number">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="bankIfscCode" placeholder="Bank IFSC Code">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="bankName" placeholder="Bank Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" [disabled]="registrationForm.invalid"
+                    class="btn btn-success btn-lg btn-block">Register Now</button>
+            </div>
+            <div>
+                <p class="text-danger">{{registrationResponse}}</p>
+            </div>
+        </form>
+        <div class="text-center">Already have an account? <a routerLink="/login" href="login">Sign in</a></div>
+    </div>
+
+</body>
+
+</html>
